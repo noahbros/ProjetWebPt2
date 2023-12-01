@@ -1,3 +1,4 @@
+<!-- Noah Brosseau : Page Principale -->
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 </script>
