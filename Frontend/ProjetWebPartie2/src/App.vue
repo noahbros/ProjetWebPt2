@@ -1,32 +1,58 @@
 <!-- Noah Brosseau : Page Principale -->
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import Navbar from './views/Navbar.vue'
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-          <RouterLink to="/" class="navbar-brand" href="#">Navbar</RouterLink>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <RouterLink to="/login" class="nav-link active login" aria-current="page" href="#">Login</RouterLink>
-              <RouterLink to="/about" class="nav-link" href="#">About</RouterLink>
-              <a class="nav-link" href="#">Pricing</a>
-            </div>
-            <RouterView/>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header>
+  <div class="app">
+    <Navbar/>
+    <router-view/>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-@import "./components/css/navstyle.css" 
+:root {
+  --primary: #4ad380;
+  --primary-alt: #22c55e;
+  --grey: #64748b;
+  --dark: #1e293b;
+  --dark-alt: #334155;
+  --light: #f1f5f9;
+  --sidebar-width: 300px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+}
+
+body{
+  background: var(--light);
+}
+
+button {
+  cursor: pointer;
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.app{
+  display: flex;
+
+  main{
+    flex: 1 1 0;
+    padding: 2rem;
+
+
+    @media (max-width: 768px){
+      padding-left: 6rem;
+    }
+  }
+}
+
 </style>

@@ -4,7 +4,9 @@
 
     <div>
       <form>
+        
         <div class="mb-3">
+          <h2 class="login-title">Login</h2>
           <label for="exampleInputEmail1" class="form-label">Email address</label>
           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
           <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
@@ -13,7 +15,7 @@
           <label for="exampleInputPassword1" class="form-label">Password</label>
           <input type="password" class="form-control" id="exampleInputPassword1">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="submit btn btn-primary">Submit</button>
       </form>
     </div>
   </body>
@@ -26,28 +28,22 @@ import { ref, reactive } from 'vue';
 
 
 <style lang="scss">
-@import "../css/navstyle.css";
 @import "../node_modules/bootstrap/scss/bootstrap";
-$input-btn-padding-y: .375rem;
-$input-btn-padding-x: .75rem;
-$input-btn-font-family: null;
-$input-btn-font-size: $font-size-base;
-$input-btn-line-height: $line-height-base;
 
-$input-btn-focus-width: $focus-ring-width;
-$input-btn-focus-color-opacity: $focus-ring-opacity;
-$input-btn-focus-color: $focus-ring-color;
-$input-btn-focus-blur: $focus-ring-blur;
-$input-btn-focus-box-shadow: $focus-ring-box-shadow;
+h2.login-title{
+  padding-bottom: 1rem;
+}
 
-$input-btn-padding-y-sm: .25rem;
-$input-btn-padding-x-sm: .5rem;
-$input-btn-font-size-sm: $font-size-sm;
+div.mb-3{
+  padding: 2rem;
+}
+button.submit{
+  margin-left: 8rem;
+}
 
-$input-btn-padding-y-lg: .5rem;
-$input-btn-padding-x-lg: 1rem;
-$input-btn-font-size-lg: $font-size-lg;
-
-$input-btn-border-width: var(--#{$prefix}border-width);
-
+@media(max-width: 768px){
+  form{
+    margin-left: 3rem;
+  }
+}
 </style>
