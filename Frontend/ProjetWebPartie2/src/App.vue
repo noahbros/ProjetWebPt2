@@ -30,7 +30,7 @@ import Navbar from './views/Navbar.vue'
 }
 
 body{
-  background: var(--light);
+  background: #f1f5f9;
 }
 
 button {
@@ -43,6 +43,8 @@ button {
 
 .app{
   display: flex;
+  background: #f1f5f9;
+  width: 100vw;  
 
   main{
     flex: 1 1 0;
