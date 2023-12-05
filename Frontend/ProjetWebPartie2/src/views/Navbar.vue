@@ -12,13 +12,13 @@
 
       <h3>Menu</h3>
       <div class="menu">
+        <router-link class="button" to="/about">
+          <span class="material-icons">home</span>
+          <span class="text">Acceuil</span>
+        </router-link>
         <router-link class="button" to="/livres">
           <span class="material-icons">search</span>
           <span class="text">Browse</span>
-        </router-link>
-        <router-link class="button" to="/about">
-          <span class="material-icons">help</span>
-          <span class="text">About</span>
         </router-link>
         <router-link class="button" to="/login">
           <span class="material-icons">login</span>
