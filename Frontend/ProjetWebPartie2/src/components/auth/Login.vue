@@ -23,6 +23,7 @@
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Password</label>
           <input type="password" class="form-control" id="exampleInputPassword1">
+          <router-link to="/signup">Aucun compte?</router-link>
         </div>
         <button type="submit" class="submit btn btn-primary">Submit</button>
       </form>
@@ -84,5 +85,10 @@ button.submit{
   form{
     margin-left: 3rem;
   }
+  
+  nav.navbar{
+    margin-left: 4rem;
+  }
+
 }
 </style>

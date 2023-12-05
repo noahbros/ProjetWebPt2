@@ -52,4 +52,15 @@ h2.title {
 div.card {
     width: 12rem;
 }
+
+@media(max-width: 768px){
+  nav.navbar{
+    margin-left: 4rem;
+  }
+
+  .card{
+    margin-left: 5rem;
+  }
+}
+
 </style>
