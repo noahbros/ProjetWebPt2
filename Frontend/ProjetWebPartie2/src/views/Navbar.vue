@@ -12,7 +12,7 @@
 
       <h3>Menu</h3>
       <div class="menu">
-        <router-link class="button" to="/about">
+        <router-link class="button" to="/">
           <span class="material-icons">home</span>
           <span class="text">Acceuil</span>
         </router-link>
@@ -29,7 +29,7 @@
       <div class="flex"></div>
 
       <div class="menu">
-        <router-link class="button" to="/">
+        <router-link class="button" to="/utilisateurs">
           <span class="material-icons">person</span>
           <span class="text">Account</span>
         </router-link>

@@ -16,17 +16,17 @@
   </body>
 </template>
 
-<style>
-body .acceuil-page {
+<style lang="scss" scoped>
+body.acceuil-page {
   width: 100vw;
 
   .front {
     position: relative;
     text-align: center;
 
-    h1 {
+    h1{
       position: absolute;
-      top: 10rem;
+      top: 1rem;
       margin-left: 2rem;
       padding: 2rem;
       background-color:whitesmoke;
@@ -35,6 +35,7 @@ body .acceuil-page {
       box-shadow: 10px 5px 5px rgb(24, 23, 23);
       font-weight: bold;
     }
+
     img{
       width: 100%;
       height: 50vh;
