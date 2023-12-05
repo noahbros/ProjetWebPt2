@@ -26,10 +26,11 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <p class="mb-0">Full Name</p>
+                                        <p class="mb-0">Nom Complet</p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <p class="text-muted mb-0">Johnatan Smith</p>
+                                        <p class="surname text-muted mb-0">Johnatan</p>
+                                        <p class="lastname text-muted mb-0">Smith</p>
                                     </div>
                                 </div>
                                 <hr>
@@ -44,19 +45,19 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <p class="mb-0">Phone</p>
+                                        <p class="mb-0">Date de naissance</p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <p class="text-muted mb-0">(097) 234-5678</p>
+                                        <p class="text-muted mb-0"></p>
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <p class="mb-0">Mobile</p>
+                                        <p class="mb-0">Role</p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <p class="text-muted mb-0">(098) 765-4321</p>
+                                        <p class="text-muted mb-0"></p>
                                     </div>
                                 </div>
                                 <hr>
@@ -79,6 +80,12 @@
 
 <script>
 import { ref, reactive } from 'vue';
+import { useRouter } from 'vue-router';
+import useUtilisateur from '../../services/serviceUtilisateur.js'
+const router = useRouter();
+const { utilisateurParId } = useUtilisateur();
+
+
 </script>
 
 <style lang="scss" scoped>
