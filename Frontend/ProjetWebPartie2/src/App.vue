@@ -45,6 +45,7 @@ button {
   display: flex;
   background: #f1f5f9;
   width: 100vw;  
+  
 
   main{
     flex: 1 1 0;
