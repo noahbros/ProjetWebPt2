@@ -47,7 +47,6 @@ const connect = () =>{
   console.log('login', loginInfo.value)
   login(loginInfo.value.email,loginInfo.value.mot_de_passe).then((data) =>{
     console.log('utilisateur', data)
-    router.push('/')
   }).catch(err => console.log("Probleme lors de l'ajout", err))
 }
 
