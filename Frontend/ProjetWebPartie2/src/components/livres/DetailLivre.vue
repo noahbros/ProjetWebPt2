@@ -1,3 +1,4 @@
+<!-- Noah Brosseau : Page info-livres-->
 <template>
     <div class="info-livres-page">
         <nav class="navbar border-bottom border-body" style="background: #1e293b ">

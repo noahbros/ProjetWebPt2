@@ -1,4 +1,4 @@
-<!-- Noah Brosseau : Page livres-->
+<!-- Noah Brosseau : Display livres-->
 <template>
     <div  @click="details" class="card">
         <img :src= props.livres.photo class="card-img-top" id="image-livre" alt="LivreImage">
