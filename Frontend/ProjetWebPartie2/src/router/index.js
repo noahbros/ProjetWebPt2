@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../components/auth/Login.vue'
 import Livres from '../components/livres/Livres.vue'
+import DetailLivre from '../components/livres/DetailLivre.vue'
 import ListeLivres from '../components/livres/ListeLivres.vue'
 import Acceuil from '../views/Acceuil.vue'
 import UtilisateurInfo from '../components/utilisateurs/UtilisateursInfo.vue'
@@ -22,6 +23,11 @@ const router = createRouter({
       path: '/livres',
       name: 'livres',
       component: ListeLivres
+    },
+    {
+      path: '/details/:id',
+      name: 'livres-info',
+      component: DetailLivre
     },
     {
       path: '/utilisateurs',

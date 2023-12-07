@@ -7,7 +7,7 @@ const Utilisateur = database.define('utilisateurs', {
     nom:{type: DataTypes.STRING, allowNull: false},
     prenom:{type: DataTypes.STRING, allowNull: false},
     naissance:{type: DataTypes.DATEONLY},
-    photo:{type: DataTypes.BLOB},
+    photo:{type: DataTypes.STRING},
     email:{type: DataTypes.STRING, allowNull : false},
     mot_de_passe:{type: DataTypes.STRING, allowNull: false},
     roleId:{type: DataTypes.INTEGER, allowNull : true, references : {model : Roles, key : 'id'}}

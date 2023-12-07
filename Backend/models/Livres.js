@@ -8,6 +8,7 @@ const Livres = database.define('livres', {
     nom: {type: DataTypes.STRING, allowNull: false},
     date_de_pub:{type: DataTypes.DATE, allowNull: false},
     rating:{type: DataTypes.INTEGER},
+    photo:{type: DataTypes.STRING},
     maison_edition:{type: DataTypes.STRING, allowNull : false},
     location:{type: DataTypes.STRING},
     montant:{type: DataTypes.INTEGER},
