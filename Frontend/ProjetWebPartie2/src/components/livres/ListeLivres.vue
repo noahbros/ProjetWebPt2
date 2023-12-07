@@ -1,3 +1,4 @@
+<!-- Noah Brosseau : Page browse-->
 <template>
     <div class="livres-page">
         <nav class="navbar border-bottom border-body" style="background: #1e293b ">
@@ -46,6 +47,10 @@ div.livres-page{
 div.allLivres{
     display: flex;
     flex-direction: row;
+}
+
+.navbar-brand{
+    font-weight: bold;
 }
 
 
