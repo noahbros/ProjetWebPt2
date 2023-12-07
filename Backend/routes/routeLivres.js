@@ -2,7 +2,7 @@
 import {Router} from 'express'
 import { getAllLivres, searchLivres, addLivres, deleteLivres, updateLivres} from '../controllers/livres.js'
 import {body, query} from 'express-validator'
-import { isAdmin, verifierToken } from '../auth/autorisation.js'
+import { isAdmin, isBibliothecaire, verifierToken } from '../auth/autorisation.js'
 import livresRegles from '../validations/LivresValidations.js'
 
 const routeLivres = Router()

@@ -49,3 +49,33 @@ export const isAdmin = async (req, res, next)=>{
         return res.status(404).json({message : error.message})
     }
 }
+
+export const isBibliothecaire = async (req, res, next)=>{
+    const utilisateurId = req.utilisateurId //Field added by "verifierToken", checks the users data.
+
+    if(!utilisateurId){
+        return res.status(404).json({message : "Utilisateur non retrouvé."})
+    }
+    try{
+        const result = await Utilisateur.findByPk(utilisateurId)
+        if(!result){
+            return res.status(403).json({message : "Non autorisé."})
+        }
+        try{
+            const resultRoles = await Roles.findOne({where : {id : result.roleId}})
+            if(!resultRoles){
+                return res.status(403).json({message : "Non autorisé."})
+            }
+            if(resultRoles.nom.toLowerCase() === "bibliothecaire"){
+                next()
+                return
+            }
+            res.status(401).json({message : "Permission non autorisé, admin requis."})
+            return
+        } catch (error){
+            return res.status(404).json({message : error.message})
+        }
+    } catch (error){
+        return res.status(404).json({message : error.message})
+    }
+}
