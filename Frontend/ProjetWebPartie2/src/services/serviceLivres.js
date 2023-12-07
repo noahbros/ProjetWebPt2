@@ -8,7 +8,7 @@ const useLivres = () =>{
         return result.data.data
     }
     const searchLivres = async (id) =>{
-        const result = await axios.get(`${import.meta.env.VITE_BASE_URL}/livres`, {params : {id}})
+        const result = await axios.get(`${import.meta.env.VITE_BASE_URL}/livres/get`, {params : {id}})
         return result.data.data
     }
     const addLivres = async (livres) =>{

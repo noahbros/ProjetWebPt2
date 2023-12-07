@@ -1,12 +1,11 @@
 <!-- Noah Brosseau : Page livres-->
 <template>
-    <div class="card">
-        <img src="..." class="card-img-top" alt="LivreImage">
+    <div  @click="details" class="card">
+        <img :src= props.livres.photo class="card-img-top" id="image-livre" alt="LivreImage">
 
         <div class="card-body">
             <h5 class="card-title"> {{ livres.nom }}</h5>
             <p class="card-text"> {{ livres.biographie }}</p>
-            <a @click="details" class="btn btn-primary">Voir</a>
         </div>
     </div>
 </template>
@@ -24,6 +23,7 @@ const props = defineProps({
             nom: 'test',
             date_de_pub: '',
             rating: 0,
+            photo: '',
             maison_edition: 'test',
             location: 'test',
             montant: 0,
@@ -35,22 +35,27 @@ const props = defineProps({
 })
 
 const details = () => {
-    router.push(`/details/${props.livres.id}`)
+    router.push(`details/${props.livres.id}`)
 }
 
+document.getElementsByClassName("card-img-top").src = props.livres.photo;
 
 </script>
 
 <style lang=scss scoped>
 .navbar-brand {
     font-weight: bold;
-}
+} 
 
-.livres-page {
-    width: 100vw;
-    height: 100vh;
+.card img{
+    width: 124px;
+    height: 124px;
+    margin: 1rem;
+    border: solid 4px black;
+    border-radius: 1rem;
+    box-shadow: 4px 5px 5px grey;
+    align-self: center;
 }
-
 h2.title {
     font-weight: bold;
     font-size: 3rem;
@@ -58,6 +63,26 @@ h2.title {
 
 .card {
     margin: 2rem;
+    cursor: pointer;
+}
+
+.card:hover{
+    box-shadow: -5px -5px 5px grey;
+}
+.card:active{
+    box-shadow: 4px 5px 5px 5px grey;
+
+}
+
+.card-title{
+    font-weight: bold;
+    text-align: center;
+}
+
+.card-text{
+    color: grey;
+    font-size: 12px;
+    text-align: left;
 }
 
 div.card {

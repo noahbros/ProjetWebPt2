@@ -8,7 +8,7 @@ import livresRegles from '../validations/LivresValidations.js'
 const routeLivres = Router()
 
 routeLivres.get('/', getAllLivres) //Validateur non-nécessaire, tout les paramètres de queries contient des valeurs par défaut.
-routeLivres.get('/get', verifierToken, searchLivres)
+routeLivres.get('/get', searchLivres)
 routeLivres.post('/', verifierToken, isAdmin, livresRegles, addLivres)
 routeLivres.delete('/', verifierToken, isAdmin, query('id').notEmpty(), deleteLivres)
 routeLivres.put('/', verifierToken, isAdmin, query('id').notEmpty(), updateLivres)
