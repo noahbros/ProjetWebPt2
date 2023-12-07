@@ -1,30 +1,31 @@
 //Noah Brosseau
 //Connection des routes de la table utilisateur du back-end au front-end.
-import axios from 'axios'
+import frontAPI from "./axiosAPI"
+
 
 const useUtilisateur = () =>{
     const getAllUtilisateur = async () => {
-        const result = await axios.get(`${import.meta.env.VITE_BASE_URL}/utilisateur`)
+        const result = await frontAPI.get(`/utilisateur`)
         return result.data.data
     }
-    const searchUtilisateurs = async () =>{
-        const result = await axios.get(`${import.meta.env.VITE_BASE_URL}/utilisateur/search`)
+    const searchUtilisateurs = async (id) =>{
+        const result = await frontAPI.get(`/utilisateur/search`, {params : {id}})
         return result.data.data
     }
     const AddUtilisateur = async (utilisateur) =>{
-        const result = await axios.post(`${import.meta.env.VITE_BASE_URL}/utilisateur`, utilisateur)
+        const result = await frontAPI.post(`/utilisateur`, utilisateur)
         return result.data.data
     }
     const utilisateurParId = async (id) =>{
-        const result = await axios.get(`${import.meta.env.VITE_BASE_URL}/utilisateur/${id}`)
+        const result = await frontAPI.get(`/utilisateur/${id}`)
         return result.data.data
     }
     const modifierUtilisateur = async (id, utilisateur) =>{
-        const result = await axios.put(`${import.meta.env.VITE_BASE_URL}/utilisateur/${id}`, utilisateur)
+        const result = await frontAPI.put(`/utilisateur/${id}`, utilisateur)
         return result.data.data
     }
     const supprimerUtilisateur = async (id) =>{
-        const result =await axios.delete(`${import.meta.env.VITE_BASE_URL}/utilisateur/${id}`)
+        const result =await frontAPI.delete(`/utilisateur/${id}`)
         return result.data.data
     }
     return {getAllUtilisateur, searchUtilisateurs, AddUtilisateur, utilisateurParId, modifierUtilisateur, supprimerUtilisateur}

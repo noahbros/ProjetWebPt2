@@ -37,4 +37,15 @@ const router = createRouter({
   ]
 })
 
+
+//Routes non protégés
+import useAuthStore from '../stores/authStore.js'
+const openRoute = ['login', 'Acceuil']
+
+router.beforeEach((to, from, next) =>{
+  const {currentToken : token} =  useAuthStore()
+  if(!openRoute.includes(to.name) && !token) next({name : 'login'})
+  else next()
+})
+
 export default router

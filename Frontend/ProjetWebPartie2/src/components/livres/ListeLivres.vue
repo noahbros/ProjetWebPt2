@@ -49,5 +49,9 @@ div.allLivres{
     flex-direction: row;
 }
 
+.navbar-brand{
+    font-weight: bold;
+}
+
 
 </style>
