@@ -20,10 +20,6 @@
           <span class="material-icons">search</span>
           <span class="text">Browse</span>
         </router-link>
-        <router-link class="button" to="/login">
-          <span class="material-icons">login</span>
-          <span class="text">Login</span>
-        </router-link>
       </div>
 
       <div class="flex"></div>

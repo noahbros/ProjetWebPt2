@@ -23,8 +23,7 @@ const useAuthStore = defineStore('auth', () => {
 
     const currentToken = computed(() => token.value)
 
-    return {utilisateur, token, setUtilisateur, setToken, loggedInUser, currentToken }
-
+    return {utilisateur, token, setUtilisateur, setToken, loggedInUser, currentToken}
 
 },
 {

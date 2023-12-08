@@ -16,7 +16,7 @@ const router = createRouter({
     },
     {
       path: '/',
-      name: 'Acceuil',
+      name: 'acceuil',
       component: Acceuil
     },
     {
@@ -40,7 +40,7 @@ const router = createRouter({
 
 //Routes non protégés
 import useAuthStore from '../stores/authStore.js'
-const openRoute = ['login', 'Acceuil']
+const openRoute = ['login']
 
 router.beforeEach((to, from, next) =>{
   const {currentToken : token} =  useAuthStore()

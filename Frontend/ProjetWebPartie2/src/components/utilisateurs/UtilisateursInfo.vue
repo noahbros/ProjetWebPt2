@@ -13,8 +13,7 @@
                     <div class="col-lg-4">
                         <div class="card mb-4">
                             <div class="card-body text-center">
-                                <img :src=  utilisateur.photo
-                                    alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                                <img :src=utilisateur.photo class="rounded-circle img-fluid" style="width: 150px;">
                                 <h5 class="my-3"> {{ utilisateur.prenom }} {{ utilisateur.nom }}</h5>
                                 <p class="text-muted mb-1"></p>
                                 <p class="text-muted mb-4"></p>
@@ -29,7 +28,7 @@
                                         <p class="mb-0">Nom Complet</p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <p class="surname text-muted mb-0"> {{  utilisateur.nom }}</p>
+                                        <p class="surname text-muted mb-0"> {{ utilisateur.nom }}</p>
                                         <p class="lastname text-muted mb-0"> {{ utilisateur.prenom }}</p>
                                     </div>
                                 </div>
@@ -66,40 +65,67 @@
                     </div>
                 </div>
             </div>
+            <div class="logout-section">
+                <button @click="logout" class="btn btn-outline-success" type="submit" id="logout">Logout</button>
+            </div>
         </section>
     </body>
 </template>
 
 <script setup>
 import { ref, reactive, onBeforeMount } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import useUtilisateur from '../../services/serviceUtilisateur'
 import axios from 'axios';
 import useAuthStore from '../../stores/authStore.js'
-const {loggedInUser, currentToken} = useAuthStore
+import { useCounterStore } from '../../stores/counter.js'
+
+const { loggedInUser, currentToken, setUtilisateur, setToken } = useAuthStore()
 const { searchUtilisateurs } = useUtilisateur()
 const route = useRoute();
+const router = useRouter();
 console.log('route', route)
 
 const utilisateur = ref({})
 
 onBeforeMount(() => {
-    if(loggedInUser)
-        searchUtilisateurs(loggedInUser.id).then((data) =>{
+    if (loggedInUser)
+        searchUtilisateurs(loggedInUser.id).then((data) => {
             console.log("User connected", data)
             utilisateur.value = data[0]
             console.log(utilisateur.value)
         }).catch(err => console.log("Probleme d'affichage utilisateur", err))
 })
 
+const logout = () => {
+    setUtilisateur("")
+    setToken("")
+    router.push('/login')
+}
+
+
 
 
 </script>
 
 <style lang="scss" scoped>
-.profile-page{
+.profile-page {
     width: 100vw;
     height: 100vh;
 }
 
+h5 {
+    font-weight: bold;
+}
+
+.logout-section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    #logout {
+        margin: 1rem;
+        width: 10rem;
+    }
+}
 </style>
