@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../components/auth/Login.vue'
-import Livres from '../components/livres/Livres.vue'
+import Signup from '../components/auth/Signup.vue'
 import DetailLivre from '../components/livres/DetailLivre.vue'
 import ListeLivres from '../components/livres/ListeLivres.vue'
 import Acceuil from '../views/Acceuil.vue'
@@ -13,6 +13,11 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path:'/signup',
+      name: 'signup',
+      component: Signup
     },
     {
       path: '/',
@@ -40,8 +45,9 @@ const router = createRouter({
 
 //Routes non protégés
 import useAuthStore from '../stores/authStore.js'
-const openRoute = ['login']
+const openRoute = ['login', 'signup']
 
+  //Vérifie si un token est associés à l'utilisateur, sinon force le login.
 router.beforeEach((to, from, next) =>{
   const {currentToken : token} =  useAuthStore()
   if(!openRoute.includes(to.name) && !token) next({name : 'login'})

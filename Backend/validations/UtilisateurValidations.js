@@ -1,7 +1,7 @@
 //Noah Brosseau
 import {body, check} from 'express-validator'
 //https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a : reference du regex.
-const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/ //Necessite au moins une lettre, un nombre et un caractere speciaux.
+const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/ //Necessite au moins une lettre, un nombre et un caractere speciaux.
 //https://stackoverflow.com/questions/22061723/regex-date-validation-for-yyyy-mm-dd : reference du regex.
 const naissanceRegex = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/ // YYYY-MM-DD
 const utilisateursRegles = [
