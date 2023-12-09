@@ -97,7 +97,6 @@ onBeforeMount(() => {
         searchUtilisateurs(loggedInUser.id).then((data) => {
             utilisateur.value = data[0]
             loggedInUser.roleId = utilisateur.value.roleId
-
             searchRoles(loggedInUser.roleId).then((roles => {
                 document.getElementById("roleName").innerHTML = roles.nom
             })).catch(err => console.log("Probleme lors de la recuperation du role.", err))
