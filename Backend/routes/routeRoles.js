@@ -8,7 +8,7 @@ import rolesRegles from '../validations/RolesValidations.js';
 const routeRoles = Router()
 
 routeRoles.get('/', verifierToken, isAdmin, getAllRoles) //Validateur non-nécessaire, tout les paramètres de queries contient des valeurs par défaut.
-routeRoles.get('/get', verifierToken, isAdmin, searchRoles) //Les valeurs sont valider dans le callback, manuellement sans express-validator, pour des raisons de préférences.
+routeRoles.get('/get', verifierToken, searchRoles) //Les valeurs sont valider dans le callback, manuellement sans express-validator, pour des raisons de préférences.
 routeRoles.post('/', rolesRegles, AddRole)
 routeRoles.delete('/', verifierToken, isAdmin, query('id').notEmpty(), DeleteRole)
 routeRoles.put('/', rolesRegles, verifierToken, isAdmin, query('id').notEmpty(), body('nom').notEmpty(), UpdateRole)

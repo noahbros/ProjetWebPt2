@@ -32,7 +32,7 @@ const app = express()
 const server = https.createServer(certInfos, app).listen(PORT) //Lancement du serveur.
 
 //Reset la BDD lorsqu'elle est initié.
-database.sync({force : true})
+database.sync({alter : true})
 
 //Liaison de la fonction de redirection HTTPS au serveur.
 app.use(redirectToHTTPS) 
