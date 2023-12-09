@@ -11,7 +11,7 @@ routeUtilisateur.get('/', verifierToken, getAllUtilisateur)
 routeUtilisateur.get('/search', verifierToken, searchUtilisateurs)
 routeUtilisateur.post('/', utilisateursRegles, AddUtilisateur)
 routeUtilisateur.get('/:id', verifierToken, utilisateurParId)
-routeUtilisateur.put('/:id', verifierToken, isAdmin, body('nom').notEmpty(), body('mot_de_passe').notEmpty(), modifierUtilisateur)
+routeUtilisateur.put('/:id', verifierToken, modifierUtilisateur)
 routeUtilisateur.delete('/:id', verifierToken, isAdmin, supprimerUtilisateur)
 
 export default routeUtilisateur

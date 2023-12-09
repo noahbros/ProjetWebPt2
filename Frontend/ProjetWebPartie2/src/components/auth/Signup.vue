@@ -34,14 +34,15 @@
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <input v-model="utilisateur.email" type="email" id="form3Example3cg" class="form-control form-control-lg" />
+                                            <input v-model="utilisateur.email" type="email" id="form3Example3cg" class="form-control form-control-lg" placeholder="example@gmail.com" />
                                             <label class="form-label" for="form3Example3cg">Email</label>
                                         </div>
 
                                         <div class="form-outline mb-4">
                                             <input v-model="utilisateur.mot_de_passe" type="password" id="form3Example4cg"
-                                                class="form-control form-control-lg" />
+                                                class="form-control form-control-lg"/>
                                             <label class="form-label" for="form3Example4cg">Mot de passe</label>
+                                            <p class="password-rules">*Doit être minimum 8 caractères, et composé d'au moins une lettre, un chiffre et un caractère spéciaux.</p>
                                         </div>
 
                                         <div class="d-flex justify-content-center">
@@ -112,5 +113,11 @@ body{
 
 #signup{
     height: 94vh;
+}
+
+.password-rules{
+    color: darkred;
+    font-size: 12px;
+    font-style:italic;
 }
 </style>

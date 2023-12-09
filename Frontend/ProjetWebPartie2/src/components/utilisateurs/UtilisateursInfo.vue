@@ -56,7 +56,7 @@
                                         <p class="mb-0">Role</p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <p class="text-muted mb-0"> {{ utilisateur.roleId }}</p>
+                                        <p class="text-muted mb-0" id="roleName"></p>
                                     </div>
                                 </div>
                                 <hr>
@@ -73,15 +73,16 @@
 </template>
 
 <script setup>
-import { ref, reactive, onBeforeMount } from 'vue';
+import { ref, onBeforeMount } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import useUtilisateur from '../../services/serviceUtilisateur'
-import axios from 'axios';
+import useRoles from '../../services/serviceRoles'
 import useAuthStore from '../../stores/authStore.js'
-import { useCounterStore } from '../../stores/counter.js'
 
-const { loggedInUser, currentToken, setUtilisateur, setToken } = useAuthStore()
-const { searchUtilisateurs } = useUtilisateur()
+const { loggedInUser, setToken, setUtilisateur } = useAuthStore()
+const { searchUtilisateurs, modifierUtilisateur } = useUtilisateur()
+const { searchRoles } = useRoles();
+
 const route = useRoute();
 const router = useRouter();
 console.log('route', route)
@@ -89,12 +90,32 @@ console.log('route', route)
 const utilisateur = ref({})
 
 onBeforeMount(() => {
-    if (loggedInUser)
+    if (loggedInUser) {
         searchUtilisateurs(loggedInUser.id).then((data) => {
-            console.log("User connected", data)
             utilisateur.value = data[0]
-            console.log(utilisateur.value)
+            loggedInUser.roleId = utilisateur.value.roleId
+            if (!loggedInUser.roleId) {
+                loggedInUser.roleId = 3;
+                modifierUtilisateur(loggedInUser.id, loggedInUser).then(() => {
+                    console.log("modified : ", utilisateur.value)
+                }).catch(err => console.log("Probleme lors d'affectation du role.", err))
+            }
+            else {
+                if (loggedInUser.roleId === 1) {
+                    router.push('/admin')
+                    return
+                }
+                if(loggedInUser.roleId === 2){
+                    router.push('/bibliothecaire')
+                    return
+                }
+            }
+            searchRoles(loggedInUser.roleId).then((roles => {
+                document.getElementById("roleName").innerHTML = roles.nom
+            })).catch(err => console.log("Probleme lors de la recuperation du role.", err))
+
         }).catch(err => console.log("Probleme d'affichage utilisateur", err))
+    }
 })
 
 const logout = () => {
@@ -102,16 +123,16 @@ const logout = () => {
     setToken("")
     router.push('/login')
 }
-
-
-
-
 </script>
 
 <style lang="scss" scoped>
 .profile-page {
     width: 100vw;
     height: 100vh;
+}
+
+section{
+  height: 93vh;
 }
 
 h5 {

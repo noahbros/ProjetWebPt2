@@ -5,11 +5,20 @@
     </div>
 </template>
 
-<script>
+<script setup>
     import { ref, reactive } from 'vue';
 
+    const propsRoles = defineProps({
+    roles: {
+        type: Object,
+        default: () => ({
+            id: '',
+            nom: 'test'
+        })
+    }
+})
 </script>
 
 <style scoped>
-
+    
 </style>
