@@ -50,7 +50,7 @@ const adminUtilisateursProps = defineProps({
     }
 })
 
-const emit = defineEmits(['deleteUtilisateur', 'update'])
+const emit = defineEmits(['deleteUtilisateur', 'updateUtilisateur'])
 
 const manageDelete = () =>{
     console.log("Button : ")
@@ -59,7 +59,7 @@ const manageDelete = () =>{
 }
 
 const goToUpdate=()=>{
-    router.push(`/livres-update/${adminUtilisateursProps.utilisateurAdmin.id}`)
+    router.push(`/utilisateur-update/${adminUtilisateursProps.utilisateurAdmin.id}`)
 }
 
 

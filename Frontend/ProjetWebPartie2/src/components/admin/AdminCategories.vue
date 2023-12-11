@@ -29,7 +29,7 @@ const adminCategorieProps = defineProps({
     }
 })
 
-const emit = defineEmits(['supprimerCategory', 'update'])
+const emit = defineEmits(['supprimerCategory', 'updateCategory'])
 
 const manageDelete = () =>{
     console.log("Button : ")
@@ -38,7 +38,7 @@ const manageDelete = () =>{
 }
 
 const goToUpdate=()=>{
-    router.push(`/livres-update/${adminCategorieProps.categorieAdmin.id}`)
+    router.push(`/categorie-update/${adminCategorieProps.categorieAdmin.id}`)
 }
 
 

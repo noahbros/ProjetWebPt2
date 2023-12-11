@@ -13,15 +13,18 @@ import Bibliothecaire from '../components/admin/Bibliothecaire.vue'
 import BibliothecaireControlPanel from '../components/admin/BibliothecaireControlPanel.vue'
 
 import AjoutCategorie from '../components/categories/AjoutCategorie.vue'
+import UpdateCategorie from '../components/categories/UpdateCategorie.vue'
 
 import DetailLivre from '../components/livres/DetailLivre.vue'
 import ListeLivres from '../components/livres/ListeLivres.vue'
 import AjoutLivre from '../components/livres/AjoutLivre.vue'
+import UpdateLivre from '../components/livres/UpdateLivre.vue'
 
 import Acceuil from '../views/Acceuil.vue'
 
 import UtilisateurInfo from '../components/utilisateurs/UtilisateursInfo.vue'
 import AjoutUtilisateur from '../components/utilisateurs/AjoutUtilisateur.vue'
+import UpdateUtilisateur from '../components/utilisateurs/UpdateUtilisateur.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -82,6 +85,11 @@ const router = createRouter({
       name: 'livreAjout',
       component: AjoutLivre
     },
+    {
+      path: '/livres-update/:id',
+      name: 'livreUpdate',
+      component: UpdateLivre
+    },
     { //Admin Categories control page.
       path:'/aCategories',
       name: 'categoriesConsole',
@@ -94,15 +102,25 @@ const router = createRouter({
       component: AjoutCategorie
 
     },
+    { //Admin Categories (UPDATE)
+      path:'/categorie-update/:id',
+      name: 'categorieUpdate',
+      component: UpdateCategorie
+    },
     { //Admin Utilisateurs control page.
       path: '/aUtilisateurs',
       name: 'utilisateursConsole',
       component: AdminUtilisateursList
     },
-    {
+    { //Admin Utilisateurs (CREATE)
       path: '/utilisateur-ajout',
       name: 'utilisateurAjout',
       component: AjoutUtilisateur
+    },
+    { //Admin Utilisateurs (UPDATE)
+      path: '/utilisateur-update/:id',
+      name: 'utilisateurUpdate',
+      component: UpdateUtilisateur
     },
     { //Bibliothecaire control panel page
       path: '/bibliothecaire-console',

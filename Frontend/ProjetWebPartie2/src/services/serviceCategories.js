@@ -20,8 +20,8 @@ const useCategories = () => {
         const result = await frontAPI.delete(`/categories`, {params : {id}})
         return result.data.data
     }
-    const UpdateCategory = async (id, categories) => {
-        const result = await frontAPI.put(`/categories`, {params : {id}}, categories)
+    const UpdateCategory = async (id,categories) => {
+        const result = await frontAPI.put(`/categories/?id=${id}`, categories)
         return result.data.data
     }
     return { getAllCategories, SearchCategories, AddCategory, DeleteCategory, UpdateCategory }

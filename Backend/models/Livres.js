@@ -6,7 +6,7 @@ import Auteur from './Auteur.js'
 
 const Livres = database.define('livres', {
     nom: {type: DataTypes.STRING, allowNull: false},
-    date_de_pub:{type: DataTypes.DATE, allowNull: false},
+    date_de_pub:{type: DataTypes.DATEONLY, allowNull: false},
     rating:{type: DataTypes.INTEGER},
     photo:{type: DataTypes.STRING},
     maison_edition:{type: DataTypes.STRING, allowNull : false},
