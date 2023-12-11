@@ -24,7 +24,7 @@ import useLivres from '../../services/serviceLivres.js'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
-const { getAllLivres } = useLivres()
+const { getAllLivres} = useLivres()
 onBeforeMount(() => {
     getAllLivres().then(data => {
         livres.value = data
@@ -32,7 +32,6 @@ onBeforeMount(() => {
         console.log('Liste livres', data)
     })
 })
-
 import Livres from './Livres.vue'
 
 

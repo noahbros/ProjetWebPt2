@@ -1,0 +1,79 @@
+<template>
+    <body class="admin-categories">
+        <nav class="navbar border-bottom border-body" style="background: #1e293b ">
+            <div class="container-fluid">
+                <a class="navbar-brand" style="color: #ffffff; font-weight: bold">Categories data</a>
+            </div>
+        </nav>
+
+        <div class="donnees-categories">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom de categorie</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <AdminCategories v-for="category in categories" :key="category.id" :categorieAdmin="category" @supprimerCategory="supprimerCategory"/>
+                </tbody>
+            </table>
+            <button class="btn btn-primary" @click="addCategory">Ajouter</button>
+        </div>
+    </body>
+</template>
+
+<script setup>
+import {ref, reactive, onBeforeMount} from 'vue';
+const categories = ref([])
+import useCategories from '../../services/serviceCategories.js'
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
+const { getAllCategories, DeleteCategory } = useCategories();
+onBeforeMount(() => {
+    getAllCategories().then(data => {
+        categories.value = data
+        console.log(categories.value)
+        console.log('Liste categories', data)
+    })
+})
+import AdminCategories from './AdminCategories.vue'
+
+const supprimerCategory = (id) =>{
+    console.log('emits', id)
+    DeleteCategory(id).then((data) =>{
+        console.log('deleted : ', data)
+        getAllCategories().then(data =>{
+            categories.value = data
+
+            console.log("Liste de categories après suppression : ", data)
+        }).catch(err => {console.log(err.message)})
+    })
+}
+
+const addCategory = () =>{
+    router.push('/categories-ajout')
+}
+
+
+</script>
+
+<style lang=scss scoped>
+
+.admin-categories{
+    width: 100vw;
+    height: 100vh;
+
+    .donnees-categories{
+        margin: 2rem;
+        width: 50vw;
+
+    }
+
+    table{
+        width: 25vw;
+    }
+}
+
+</style>

@@ -38,8 +38,6 @@ const details = () => {
     router.push(`details/${props.livres.id}`)
 }
 
-document.getElementsByClassName("card-img-top").src = props.livres.photo;
-
 </script>
 
 <style lang=scss scoped>

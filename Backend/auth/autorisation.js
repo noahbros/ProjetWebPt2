@@ -50,7 +50,7 @@ export const isAdmin = async (req, res, next)=>{
     }
 }
 
-export const isBibliothecaire = async (req, res, next)=>{
+export const isAdminOrBibliothecaire = async (req, res, next)=>{
     const utilisateurId = req.utilisateurId //Field added by "verifierToken", checks the users data.
 
     if(!utilisateurId){
@@ -66,7 +66,7 @@ export const isBibliothecaire = async (req, res, next)=>{
             if(!resultRoles){
                 return res.status(403).json({message : "Non autorisé."})
             }
-            if(resultRoles.nom.toLowerCase() === "bibliothecaire"){
+            if(resultRoles.nom.toLowerCase() === "admin" || resultRoles.nom.toLowerCase() === "bibliothecaire"){
                 next()
                 return
             }

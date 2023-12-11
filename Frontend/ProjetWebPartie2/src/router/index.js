@@ -1,13 +1,22 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../components/auth/Login.vue'
 import Signup from '../components/auth/Signup.vue'
+
 import Admin from '../components/admin/Admin.vue'
 import AdminControlPanel from '../components/admin/AdminControlPanel.vue'
+import AdminLivresList from '../components/admin/AdminLivresListe.vue'
+import AdminCategoriesList from '../components/admin/AdminCategoriesListe.vue'
+import AdminUtilisateursList from '../components/admin/AdminUtilisateursListe.vue'
+
+
 import Bibliothecaire from '../components/admin/Bibliothecaire.vue'
 import BibliothecaireControlPanel from '../components/admin/BibliothecaireControlPanel.vue'
+
 import DetailLivre from '../components/livres/DetailLivre.vue'
 import ListeLivres from '../components/livres/ListeLivres.vue'
+
 import Acceuil from '../views/Acceuil.vue'
+
 import UtilisateurInfo from '../components/utilisateurs/UtilisateursInfo.vue'
 
 const router = createRouter({
@@ -58,6 +67,22 @@ const router = createRouter({
       name: 'adminConsole',
       component: AdminControlPanel
 
+    },
+    { //Admin Livres control page.
+      path: '/aLivres',
+      name: 'livreConsole',
+      component: AdminLivresList
+    },
+    { //Admin Categories control page.
+      path:'/aCategories',
+      name: 'categoriesConsole',
+      component: AdminCategoriesList
+
+    },
+    { //Admin Utilisateurs control page.
+      path: '/aUtilisateurs',
+      name: 'utilisateursConsole',
+      component: AdminUtilisateursList
     },
     { //Bibliothecaire control panel page
       path: '/bibliothecaire-console',
