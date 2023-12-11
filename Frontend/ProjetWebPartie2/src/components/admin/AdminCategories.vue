@@ -47,7 +47,9 @@ const goToUpdate=()=>{
 <style lang="scss" scoped>
 
 .buttons{
-width: 2vw;
+display: flex;
+align-items: center;
+flex-direction: row;
     button{
     height: 5vh;
 }
@@ -55,7 +57,7 @@ width: 2vw;
 
 
 .admin-categories-donnees{
-    height: .5vh;
+    height: 1vh;
 }
 
 </style>

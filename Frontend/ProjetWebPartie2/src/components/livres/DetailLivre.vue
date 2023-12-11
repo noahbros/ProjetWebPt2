@@ -13,7 +13,7 @@
 
         <div class="info-livres-unique">
             <div class="titre-livre">
-                <h1>Livre : {{ livres.nom }} </h1>
+                <h1>{{ livres.nom }} </h1>
             </div>
 
             <div class="bio-livre">
@@ -22,12 +22,12 @@
             </div>
 
             <div class="pub-livre">
-                <h2>Date de pub</h2>
+                <h2>Date de publication</h2>
                 <p> {{ livres.date_de_pub }}</p>
             </div>
 
             <div class="edition-livre">
-                <h2>Maison d'edition</h2>
+                <h2>Maison d'édition</h2>
                 <p> {{ livres.maison_edition }}</p>
             </div>
 
@@ -41,17 +41,17 @@
             </div>
 
             <div class="category-livre">
-                <h3>Category</h3>
+                <h3>Catégorie</h3>
                 <p> nom de la categorie ici.</p>
             </div>
 
             <div class="rating-livre">
-                <h3>Rating</h3>
+                <h3>Score</h3>
                 <p> {{ livres.rating }}</p>
             </div>
 
             <div class="location-livre">
-                <h3>Location</h3>
+                <h3>Location disponible</h3>
                 <p> {{ livres.location }}</p>
             </div>
 

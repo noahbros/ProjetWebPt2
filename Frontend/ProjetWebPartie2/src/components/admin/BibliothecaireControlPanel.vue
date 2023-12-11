@@ -8,6 +8,10 @@
 
 
         <div class="bibliothecaire-tables-interface">
+            <div class="bibliothecaire-briefing">
+                <span>Voici les tables disponible à manipuler.</span>
+                <p>Étant Bibliothécaire, vous avez accès à tout les fonctionnalités CRUD (create, read, update, delete) de chacune des tables si-dessous. Veuillez simplement cliqué un des bouttons verts pour accéder aux données associés.</p>
+            </div>
             <div class="auteur-section">
                 <h2>Auteurs</h2>
                 <router-link to="/aAuteur" class="auteur-access">Accéder aux données d'auteurs</router-link>
@@ -40,9 +44,10 @@
 }
 
 .bibliothecaire-tables-interface {
-    margin-top: 3rem;
+    margin: 3rem;
+    margin-left: 5rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
 
     .auteur-section {

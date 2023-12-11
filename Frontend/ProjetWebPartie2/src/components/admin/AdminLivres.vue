@@ -85,7 +85,6 @@ const goToUpdate=()=>{
 .buttons{
 display: flex;
 align-items: center;
-justify-content: space-evenly;
 flex-direction: row;
     button{
     height: 5vh;
@@ -94,7 +93,7 @@ flex-direction: row;
 
 
 .admin-livres-donnees{
-    height: .5vh;
+    height: 1vh;
 }
 
 </style>

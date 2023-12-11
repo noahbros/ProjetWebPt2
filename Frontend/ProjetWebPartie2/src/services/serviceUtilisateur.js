@@ -13,7 +13,7 @@ const useUtilisateur = () =>{
         return result.data.data
     }
     const AddUtilisateur = async (utilisateur) =>{
-        const result = await frontAPI.post(`/utilisateur`, utilisateur)
+        const result = await frontAPI.post(`/utilisateur/`, utilisateur)
         return result.data.data
     }
     const utilisateurParId = async (id) =>{

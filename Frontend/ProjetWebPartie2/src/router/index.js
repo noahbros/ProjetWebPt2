@@ -12,12 +12,16 @@ import AdminUtilisateursList from '../components/admin/AdminUtilisateursListe.vu
 import Bibliothecaire from '../components/admin/Bibliothecaire.vue'
 import BibliothecaireControlPanel from '../components/admin/BibliothecaireControlPanel.vue'
 
+import AjoutCategorie from '../components/categories/AjoutCategorie.vue'
+
 import DetailLivre from '../components/livres/DetailLivre.vue'
 import ListeLivres from '../components/livres/ListeLivres.vue'
+import AjoutLivre from '../components/livres/AjoutLivre.vue'
 
 import Acceuil from '../views/Acceuil.vue'
 
 import UtilisateurInfo from '../components/utilisateurs/UtilisateursInfo.vue'
+import AjoutUtilisateur from '../components/utilisateurs/AjoutUtilisateur.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -73,16 +77,32 @@ const router = createRouter({
       name: 'livreConsole',
       component: AdminLivresList
     },
+    { //Admin Livres (CREATE)
+      path:'/livres-ajout',
+      name: 'livreAjout',
+      component: AjoutLivre
+    },
     { //Admin Categories control page.
       path:'/aCategories',
       name: 'categoriesConsole',
       component: AdminCategoriesList
 
     },
+    { //Admin Categories (CREATE)
+      path:'/categories-ajout',
+      name: 'categorieAjout',
+      component: AjoutCategorie
+
+    },
     { //Admin Utilisateurs control page.
       path: '/aUtilisateurs',
       name: 'utilisateursConsole',
       component: AdminUtilisateursList
+    },
+    {
+      path: '/utilisateur-ajout',
+      name: 'utilisateurAjout',
+      component: AjoutUtilisateur
     },
     { //Bibliothecaire control panel page
       path: '/bibliothecaire-console',

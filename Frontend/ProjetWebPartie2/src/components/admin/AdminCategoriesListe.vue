@@ -11,7 +11,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nom de categorie</th>
+                        <th>Nom de catégorie</th>
                     </tr>
                 </thead>
                 <tbody>
