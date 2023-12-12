@@ -87,8 +87,6 @@ onBeforeMount(() => {
             adminLivreProps.livreAdmin.auteurId = data.nom
             console.log("Nom d'auteur : ", data.nom)
         })).catch(err => console.log("Probleme pendant la recherche d'auteur", err))
-    } else {
-        document.getElementsByClassName('auteur').innerHTML = "Aucun auteur attribuer."
     }
 
     if (adminLivreProps.livreAdmin.categoryId) {
@@ -96,8 +94,6 @@ onBeforeMount(() => {
             adminLivreProps.livreAdmin.categoryId = data[0].nom
             console.log("Nom de categorie :", data[0].nom)
         })).catch(err => console.log("Probleme pendant la recherche de categories", err))
-    } else {
-        document.getElementsByClassName('categories').innerHTML = "Aucune categorie attribuer"
     }
 })
 

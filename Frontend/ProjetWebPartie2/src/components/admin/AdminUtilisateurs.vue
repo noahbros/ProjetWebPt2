@@ -18,7 +18,7 @@
         <td>
             {{ utilisateurAdmin.email }}
         </td>
-        <td>
+        <td class="role">
             {{ utilisateurAdmin.roleId }}
         </td>
         <td class="buttons">
@@ -29,10 +29,15 @@
 </template>
 
 <script setup>
-import {ref, reactive} from 'vue';
+import {ref, reactive, onBeforeMount} from 'vue';
 
 import { useRouter } from 'vue-router';
+import useRoles from '../../services/serviceRoles'
+
 const router = useRouter()
+
+const { searchRoles } = useRoles();
+
 
 const adminUtilisateursProps = defineProps({
     utilisateurAdmin: {
@@ -61,6 +66,15 @@ const manageDelete = () =>{
 const goToUpdate=()=>{
     router.push(`/utilisateur-update/${adminUtilisateursProps.utilisateurAdmin.id}`)
 }
+
+onBeforeMount(() =>{
+    if(adminUtilisateursProps.utilisateurAdmin.roleId){
+        searchRoles(adminUtilisateursProps.utilisateurAdmin.roleId).then((data =>{
+            adminUtilisateursProps.utilisateurAdmin.roleId = data.nom
+            console.log("nom de role : ", data.nom)
+        })).catch(err => console.log("Probleme pendant la recherche de role", err))
+    }
+})
 
 
 </script>
