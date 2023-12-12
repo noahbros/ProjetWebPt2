@@ -7,7 +7,7 @@
     </nav>
 
     <section style="background-color: #eee;">
-      <div class="container py-5">
+      <div class="container">
         <div class="row">
           <div class="col-lg-4">
             <div class="card mb-4">
@@ -67,7 +67,8 @@
       <div class="logout-section">
         <div class="adminButtons">
           <button @click="logout" class="btn btn-outline-success" type="submit" id="logout">Logout</button>
-        <button @click="accessBibliothecaireCommands" class="btn btn-outline-success" type="submit" id="admin">Bibliothecaire Controls</button>
+          <button @click="accessBibliothecaireCommands" class="btn btn-outline-success" type="submit"
+            id="bibliothecaire">Bibliothecaire Controls</button>
         </div>
       </div>
     </section>
@@ -93,52 +94,103 @@ console.log('route', route)
 const utilisateur = ref({})
 
 onBeforeMount(() => {
-    if (loggedInUser) {
-        searchUtilisateurs(loggedInUser.id).then((data) => {
-            utilisateur.value = data[0]
-            loggedInUser.roleId = utilisateur.value.roleId
-            searchRoles(loggedInUser.roleId).then((roles => {
-                document.getElementById("roleName").innerHTML = roles.nom
-            })).catch(err => console.log("Probleme lors de la recuperation du role.", err))
+  if (loggedInUser) {
+    searchUtilisateurs(loggedInUser.id).then((data) => {
+      utilisateur.value = data[0]
+      loggedInUser.roleId = utilisateur.value.roleId
+      searchRoles(loggedInUser.roleId).then((roles => {
+        document.getElementById("roleName").innerHTML = roles.nom
+      })).catch(err => console.log("Probleme lors de la recuperation du role.", err))
 
-        }).catch(err => console.log("Probleme d'affichage utilisateur", err))
-    }
+    }).catch(err => console.log("Probleme d'affichage utilisateur", err))
+  }
 })
 
 const logout = () => {
-    setUtilisateur("")
-    setToken("")
-    router.push('/login')
+  setUtilisateur("")
+  setToken("")
+  router.push('/login')
 }
 
-const accessBibliothecaireCommands = () =>{
+const accessBibliothecaireCommands = () => {
   router.push('/bibliothecaire-console')
 }
 </script>
 
 
 <style lang="scss" scoped>
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding-left: 4rem;
+}
+
+.card-body{
+  padding: 1rem;
+}
+
 .bibliothecaire-account-page {
   width: 100vw;
-  height: 100vh;
+  height: auto;
 }
 
 h5 {
-    font-weight: bold;
+  font-weight: bold;
 }
 
-section{
-  height: 93vh;
+section {
+  margin-top: 2rem;
+  height: auto;
 }
 
 .logout-section {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 
-    #logout {
-        margin: 1rem;
-        width: 10rem;
-    }
+  #logout {
+    margin: 1rem;
+    width: 10rem;
+  }
+
+}
+
+@media(max-width: 768px) { //Normal screen iPhone11
+  .bibliothecaire-account-page {
+    width: 100vw;
+    height: auto;
+  }
+
+  .card{
+    margin-top: 1rem;
+  }
+
+  section {
+    height: 100vh;
+    margin-left: 4rem;
+  }
+
+  #bibliothecaire {
+    margin-bottom: 1rem;
+  }
+}
+
+@media(max-width: 812px) { //Widescreen iPhone11
+  .admin-account-page {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .card{
+    margin-top: 1rem;
+  }
+
+  section {
+    height: 150vh;
+    margin-left: 4rem;
+  }
+
 }
 </style>

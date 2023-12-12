@@ -3,12 +3,12 @@
     <body class="profile-page">
         <nav class="navbar border-bottom border-body" style="background: #1e293b ">
             <div class="container-fluid">
-                <a class="navbar-brand" style="color: #ffffff; font-weight: bold">Profile</a>
+                <a class="navbar-brand" style="color: #ffffff; font-weight: bold">Profil</a>
             </div>
         </nav>
 
         <section style="background-color: #eee;">
-            <div class="container py-5">
+            <div class="container">
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="card mb-4">
@@ -105,7 +105,7 @@ onBeforeMount(() => {
                     router.push('/admin')
                     return
                 }
-                if(loggedInUser.roleId === 2){
+                if (loggedInUser.roleId === 2) {
                     router.push('/bibliothecaire')
                     return
                 }
@@ -126,13 +126,24 @@ const logout = () => {
 </script>
 
 <style lang="scss" scoped>
-.profile-page {
-    width: 100vw;
-    height: 100vh;
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding-left: 4rem;
 }
 
-section{
-  height: 93vh;
+.card{
+    margin-top: 2rem;
+}
+
+.profile-page {
+    width: 100vw;
+    height: auto;
+}
+
+section {
+    height: 100vh;
 }
 
 h5 {
@@ -147,6 +158,45 @@ h5 {
     #logout {
         margin: 1rem;
         width: 10rem;
+    }
+}
+
+@media(max-width: 768px) {
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        padding-left: 0rem;
+    }
+
+    .card {
+        margin-top: 1rem;
+    }
+
+    .profile-page {
+        section {
+            margin-left: 4rem;
+        }
+    }
+
+}
+
+@media(max-width: 812px){
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        padding-left: 4rem;
+    }
+
+    .card {
+        margin-top: 1rem;
+    }
+
+    .profile-page {
+        section {
+            margin-left: 4rem;
+        }
     }
 }
 </style>

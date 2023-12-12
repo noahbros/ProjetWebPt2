@@ -20,16 +20,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <AdminUtilisateurs v-for="utilisateur in utilisateurs" :key="utilisateur.id" :utilisateurAdmin="utilisateur" @deleteUtilisateur="deleteUtilisateur"/>
+                    <AdminUtilisateurs v-for="utilisateur in utilisateurs" :key="utilisateur.id"
+                        :utilisateurAdmin="utilisateur" @deleteUtilisateur="deleteUtilisateur" />
                 </tbody>
             </table>
-            <button class="btn btn-primary" @click="addUtilisateur">Ajouter</button>
+            <button class="btn btn-primary" @click="addUtilisateur" id="ajout">Ajouter</button>
         </div>
     </body>
 </template>
 
 <script setup>
-import {ref, reactive, onBeforeMount} from 'vue';
+import { ref, reactive, onBeforeMount } from 'vue';
 const utilisateurs = ref([])
 import useUtilisateur from '../../services/serviceUtilisateur.js'
 import { useRouter } from 'vue-router'
@@ -45,19 +46,19 @@ onBeforeMount(() => {
 })
 import AdminUtilisateurs from './AdminUtilisateurs.vue'
 
-const deleteUtilisateur = (id) =>{
+const deleteUtilisateur = (id) => {
     console.log('emits', id)
-    supprimerUtilisateur(id).then((data) =>{
+    supprimerUtilisateur(id).then((data) => {
         console.log('deleted : ', data)
-        getAllUtilisateur().then(data =>{
+        getAllUtilisateur().then(data => {
             utilisateurs.value = data
 
             console.log("Liste de utilisateurs après suppression : ", data)
-        }).catch(err => {console.log(err.message)})
+        }).catch(err => { console.log(err.message) })
     })
 }
 
-const addUtilisateur = () =>{
+const addUtilisateur = () => {
     router.push('/utilisateur-ajout')
 }
 
@@ -65,20 +66,62 @@ const addUtilisateur = () =>{
 </script>
 
 <style lang=scss scoped>
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding-left: 4rem;
+}
 
-.admin-utilisateurs{
-    width: 100vw;
-    height: 100vh;
+.admin-utilisateurs {
+    height: auto;
 
-    .donnees-utilisateurs{
+    .donnees-utilisateurs {
         margin: 2rem;
         width: 50vw;
 
     }
 
-    table{
+    table {
         width: 25vw;
     }
 }
 
+
+@media(max-width: 812px) {
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        padding-left: 0rem;
+    }
+
+    .admin-utilisateurs {
+        width: 200rem;
+        height: auto;
+
+        table {
+            margin-left: 12vw;
+
+        }
+
+        #ajout {
+            margin-left: 5rem;
+        }
+    }
+}
+
+@media(max-width: 1280px){
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        padding-left: 4rem;
+    }
+
+    .admin-utilisateurs{
+        width: 100rem;
+        height: auto;
+    }
+}
 </style>

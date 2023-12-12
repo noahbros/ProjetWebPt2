@@ -5,9 +5,9 @@ import Utilisateur from "./Utilisateur.js"
 import Roles from "./Roles.js"
 
 const Emprunts = database.define('emprunts', {
-    statut: {type: DataTypes.STRING, allowNull: false},
+    statut: {type: DataTypes.DATEONLY, allowNull: false},
     date_emprunt: {type: DataTypes.DATEONLY, allowNull: false},
-    date_de_fin: {type: DataTypes.DATEONLY},
+    date_de_fin: {type: DataTypes.STRING},
     livreId: {type: DataTypes.INTEGER, allowNull: false, references: {model : Roles, key : 'id'}},
     utilisateurId: {type: DataTypes.INTEGER, allowNull : false, references: {model : Utilisateur, key : 'id'}}
 })

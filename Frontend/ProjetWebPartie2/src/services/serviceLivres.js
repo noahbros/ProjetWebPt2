@@ -22,7 +22,7 @@ const useLivres = () =>{
         return result.data.data
     }
     const updateLivres = async (id, livres) =>{
-        const result = await frontAPI.put(`/livres`, livres)
+        const result = await frontAPI.put(`/livres?id=${id}`, livres)
         return result.data.data
     }
     return {getAllLivres, searchLivres, addLivres, deleteLivres, updateLivres}

@@ -29,7 +29,7 @@ const adminCategorieProps = defineProps({
     }
 })
 
-const emit = defineEmits(['supprimerCategory', 'update'])
+const emit = defineEmits(['supprimerCategory', 'updateCategorie'])
 
 const manageDelete = () =>{
     console.log("Button : ")
@@ -38,7 +38,7 @@ const manageDelete = () =>{
 }
 
 const goToUpdate=()=>{
-    router.push(`/livres-update/${adminCategorieProps.categorieAdmin.id}`)
+    router.push(`/categorie-update/${adminCategorieProps.categorieAdmin.id}`)
 }
 
 
@@ -47,7 +47,9 @@ const goToUpdate=()=>{
 <style lang="scss" scoped>
 
 .buttons{
-width: 2vw;
+display: flex;
+align-items: center;
+flex-direction: row;
     button{
     height: 5vh;
 }
@@ -55,7 +57,33 @@ width: 2vw;
 
 
 .admin-categories-donnees{
-    height: .5vh;
+    height: 1vh;
+}
+
+@media(max-width: 768px) {
+    .buttons{
+        button{
+            width: 20vw;
+            font-size: 12px;
+        }
+    }
+}
+
+@media(min-width: 812px){
+    .buttons{
+        button{
+            height: 4vw;
+        }
+    }
+
+}
+
+@media(min-width: 1280px){
+    .buttons{
+        button{
+            height: 2vw;
+        }
+    }
 }
 
 </style>

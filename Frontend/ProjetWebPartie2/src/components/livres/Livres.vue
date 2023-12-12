@@ -1,12 +1,14 @@
 <!-- Noah Brosseau : Display livres-->
 <template>
-    <div  @click="details" class="card">
-        <img :src= props.livres.photo class="card-img-top" id="image-livre" alt="LivreImage">
+    <div class="livres">
+        <div @click="details" class="card">
+        <img :src=props.livres.photo class="card-img-top" id="image-livre" alt="LivreImage">
 
         <div class="card-body">
             <h5 class="card-title"> {{ livres.nom }}</h5>
             <p class="card-text"> {{ livres.biographie }}</p>
         </div>
+    </div>
     </div>
 </template>
 
@@ -43,9 +45,9 @@ const details = () => {
 <style lang=scss scoped>
 .navbar-brand {
     font-weight: bold;
-} 
+}
 
-.card img{
+.card img {
     width: 124px;
     height: 124px;
     margin: 1rem;
@@ -54,6 +56,7 @@ const details = () => {
     box-shadow: 4px 5px 5px grey;
     align-self: center;
 }
+
 h2.title {
     font-weight: bold;
     font-size: 3rem;
@@ -64,20 +67,21 @@ h2.title {
     cursor: pointer;
 }
 
-.card:hover{
+.card:hover {
     box-shadow: -5px -5px 5px grey;
 }
-.card:active{
+
+.card:active {
     box-shadow: 4px 5px 5px 5px grey;
 
 }
 
-.card-title{
+.card-title {
     font-weight: bold;
     text-align: center;
 }
 
-.card-text{
+.card-text {
     color: grey;
     font-size: 12px;
     text-align: left;
@@ -88,12 +92,17 @@ div.card {
 }
 
 @media(max-width: 768px) {
-    nav.navbar {
-        margin-left: 4rem;
-    }
-
     .card {
+        margin: 0rem;
+        margin-top: 1rem;
         margin-left: 5rem;
+    
+        .card-text{
+            margin-left: 1rem;
+        }
+        .card-body {
+            width: 40vw;
+        }
     }
 }
 </style>
