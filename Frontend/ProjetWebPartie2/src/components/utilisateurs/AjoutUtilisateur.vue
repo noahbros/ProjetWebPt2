@@ -74,7 +74,14 @@ const ajouter = () => {
 <style scoped>
 .utilisateur-ajout-page {
     width: 100vw;
-    height: 100vh;
+    height: auto;
+
+    nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding-left: 4rem;
+        }
 
     .info-ajout {
         width: 20vw;
@@ -92,7 +99,20 @@ const ajouter = () => {
         }
     }
 
-    @media(max-width: 320px) {
+    @media(max-width: 812px) {
+
+        .utilisateur-ajout-page{
+            width: 100vw;
+            height: auto;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding-left: 4rem;
+        }
+
         .info-ajout {
             width: 50vw;
         }

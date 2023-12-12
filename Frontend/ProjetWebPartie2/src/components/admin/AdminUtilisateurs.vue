@@ -79,4 +79,12 @@ width: 2vw;
     height: .5vh;
 }
 
+@media(max-width: 1280px){
+    .buttons{
+        button{
+            height: 9vh;
+        }
+    }
+}
+
 </style>

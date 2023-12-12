@@ -18,7 +18,7 @@
                     <AdminCategories v-for="category in categories" :key="category.id" :categorieAdmin="category" @supprimerCategory="supprimerCategory"/>
                 </tbody>
             </table>
-            <button class="btn btn-primary" @click="addCategory">Ajouter</button>
+            <button class="btn btn-primary" @click="addCategory" id="ajout">Ajouter</button>
         </div>
     </body>
 </template>
@@ -60,19 +60,55 @@ const addCategory = () =>{
 </script>
 
 <style lang=scss scoped>
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding-left: 4rem;
+}
 
 .admin-categories{
     width: 100vw;
-    height: 100vh;
+    height: auto;
 
     .donnees-categories{
         margin: 2rem;
-        width: 50vw;
+        width: 25vw;
 
     }
 
     table{
-        width: 25vw;
+        width: 20vw;
+    }
+}
+
+@media(max-width: 768px) {
+
+    .admin-categories{
+        height: 100vh;
+    }
+
+    table{
+        margin-left: 2.5rem;
+    }
+
+    #ajout{
+        margin-left: 10rem;
+    }
+
+
+}
+
+@media(min-width: 812px) {
+
+    table{
+        margin-left: 14rem;
+    }
+
+    .donnees-categories{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 

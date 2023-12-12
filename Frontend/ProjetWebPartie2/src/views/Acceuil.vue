@@ -17,35 +17,43 @@
 </template>
 
 <style lang="scss" scoped>
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding-left: 4rem;
+}
+
 body.acceuil-page {
   width: 100vw;
+  height: 100vh;
 
   .front {
     position: relative;
     text-align: center;
 
-    h1{
+    h1 {
       position: absolute;
       top: 1rem;
       margin-left: 2rem;
       padding: 2rem;
-      background-color:whitesmoke;
+      background-color: whitesmoke;
       border: solid .25rem black;
       border-radius: 1rem;
       box-shadow: 10px 5px 5px rgb(24, 23, 23);
       font-weight: bold;
     }
 
-    img{
+    img {
       width: 100%;
       height: 50vh;
     }
   }
 
-  .content{
+  .content {
     background: rgb(223, 221, 221);
 
-    p{
+    p {
       padding: 1rem;
     }
   }
@@ -54,12 +62,26 @@ body.acceuil-page {
 
 
 @media(max-width: 768px) {
-  .content-acceuil {
+
+  .front {
+    margin-left: 2rem;
+  }
+
+  .content {
+    margin-left: 4rem;
+  }
+}
+
+@media(min-width: 812px) {
+
+  .front {
+    margin-left: 3rem;
+  }
+
+  .content {
     margin-left: 4rem;
   }
 
-  nav.navbar{
-    margin-left: 4rem;
-  }
+
 }
 </style>

@@ -65,7 +65,7 @@ const adminLivreProps = defineProps({
     }
 })
 
-const emit = defineEmits(['supprimerLivre', 'update'])
+const emit = defineEmits(['supprimerLivre', 'updateLivre'])
 
 const manageDelete = () =>{
     console.log("Button : ")
@@ -91,9 +91,16 @@ flex-direction: row;
 }
 }
 
-
 .admin-livres-donnees{
     height: 1vh;
+}
+
+@media(max-width: 812px){
+    .buttons{
+        button{
+            height: 10vh;
+        }
+    }
 }
 
 </style>

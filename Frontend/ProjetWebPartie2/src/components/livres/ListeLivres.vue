@@ -18,13 +18,13 @@
 </template>
 
 <script setup>
-import {ref, reactive, onBeforeMount} from 'vue';
+import { ref, reactive, onBeforeMount } from 'vue';
 const livres = ref([])
 import useLivres from '../../services/serviceLivres.js'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
-const { getAllLivres} = useLivres()
+const { getAllLivres } = useLivres()
 onBeforeMount(() => {
     getAllLivres().then(data => {
         livres.value = data
@@ -38,19 +38,59 @@ import Livres from './Livres.vue'
 </script>
 
 <style>
-
-div.livres-page{
+div.livres-page {
     width: 100vw;
+    height: 100vh;
+
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        padding-left: 4rem;
+    }
+
 }
 
-div.allLivres{
+div.allLivres {
     display: flex;
     flex-direction: row;
 }
 
-.navbar-brand{
+.navbar-brand {
     font-weight: bold;
 }
 
+@media(max-width: 768px) {
 
+    div.livres-page{
+        nav{
+            padding-left: 0rem;
+        }
+    }
+
+    .allLivres {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+
+    .container-fluid{
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
+@media(min-width: 812px){
+
+    .allLivres{
+        margin-left: 5rem;
+    }
+
+    .card-text{
+        margin-left: 1rem;
+    }
+}
 </style>

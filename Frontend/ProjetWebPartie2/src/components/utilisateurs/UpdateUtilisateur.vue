@@ -53,16 +53,16 @@ const router = useRouter()
 const utilisateur = ref({})
 
 import useUtilisateur from '../../services/serviceUtilisateur';
-const { searchUtilisateurs, modifierUtilisateur} = useUtilisateur()
+const { searchUtilisateurs, modifierUtilisateur } = useUtilisateur()
 
-onBeforeMount(() =>{
-    if(id) searchUtilisateurs(id).then(data =>{
+onBeforeMount(() => {
+    if (id) searchUtilisateurs(id).then(data => {
         utilisateur.value = data[0]
     }).catch(err => console.log('erreur de recherche', err))
 })
 
-const updateUtilisateur = () =>{
-    modifierUtilisateur(id, utilisateur.value).then(() =>{
+const updateUtilisateur = () => {
+    modifierUtilisateur(id, utilisateur.value).then(() => {
         router.push('/aUtilisateurs')
     }).catch(err => console.log('Probleme lors de la mise a jour', err))
 }
@@ -73,7 +73,7 @@ const updateUtilisateur = () =>{
 <style lang='scss' scoped>
 .update-utilisateur-page {
     width: 100vw;
-    height: 100vh;
+    height: auto;
 
     .info-update {
         width: 20vw;
@@ -91,9 +91,23 @@ const updateUtilisateur = () =>{
         }
     }
 
-    @media(max-width: 320px) {
-        .info-ajout {
+    @media(max-width: 768px) {
+        .info-update {
             width: 50vw;
+        }
+    }
+
+    @media(max-width: 1280px) {
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding-left: 4rem;
+        }
+
+        .update-utilisateur-page{
+            width: 100vw;
+            height: auto;
         }
     }
 

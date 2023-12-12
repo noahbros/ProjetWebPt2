@@ -11,7 +11,7 @@
                 <label for="exampleInputName1" class="form-label">Nom de catégorie</label>
                 <input v-model="categories.nom" type="name" class="form-control" id="exampleInputName1">
             </div>
-            <button type="submit" class="btn btn-primary">Mettre-a-jour</button>
+            <button type="submit" class="btn btn-primary" id="update-button">Mettre-a-jour</button>
         </form>
     </body>
 </template>
@@ -32,7 +32,7 @@ const { SearchCategories, UpdateCategory } = useCategories()
 onBeforeMount(() => {
     if (id) SearchCategories(id).then(data => {
         categories.value = data[0]
-        console.log("name : ",categories.value.nom)
+        console.log("name : ", categories.value.nom)
     }).catch(err => console.log('erreure de recherche', err))
 })
 
@@ -47,6 +47,13 @@ const updateCategorie = () => {
 </script>
 
 <style lang='scss' scoped>
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding-left: 4rem;
+}
+
 .update-categorie-page {
     width: 100vw;
     height: 100vh;
@@ -67,9 +74,20 @@ const updateCategorie = () => {
         }
     }
 
-    @media(max-width: 320px) {
-        .info-ajout {
+    @media(max-width: 812px) {
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding-left: 4rem;
+        }
+
+        #exampleInputName1 {
             width: 50vw;
+        }
+
+        #update-button {
+            width: 11.788rem;
         }
     }
 

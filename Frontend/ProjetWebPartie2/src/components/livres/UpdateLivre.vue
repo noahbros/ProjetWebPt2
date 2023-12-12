@@ -6,7 +6,7 @@
             </div>
         </nav>
 
-        <form  @submit.prevent="updateLivre" class="info-update">
+        <form @submit.prevent="updateLivre" class="info-update">
             <div class="section">
                 <label for="exampleInputTitle1" class="form-label">Titre</label>
                 <input v-model="livres.nom" type="name" class="form-control" id="exampleInputEmail1">
@@ -64,18 +64,18 @@ const livres = ref({})
 
 
 import useLivres from '../../services/serviceLivres';
-const { searchLivres, updateLivres} = useLivres()
+const { searchLivres, updateLivres } = useLivres()
 
-onBeforeMount(() =>{
-    if(id) searchLivres(id).then(data=>{
+onBeforeMount(() => {
+    if (id) searchLivres(id).then(data => {
         livres.value = data[0]
         console.log(livres.value)
         console.log(livres.date_de_pub)
     }).catch(err => console.log('probleme lors de la recherche', err))
 })
 
-const updateLivre = () =>{
-    updateLivres(id, livres.value).then(() =>{
+const updateLivre = () => {
+    updateLivres(id, livres.value).then(() => {
         router.push('/aLivres')
     }).catch(err => console.log('probleme lors de la mise a jour', err))
 }
@@ -85,9 +85,16 @@ const updateLivre = () =>{
 
 
 <style lang='scss' scoped>
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding-left: 4rem;
+}
+
 .update-livres-page {
     width: 100vw;
-    height: 100vh;
+    height: auto;
 
     .info-update {
         width: 20vw;
@@ -105,8 +112,8 @@ const updateLivre = () =>{
         }
     }
 
-    @media(max-width: 320px) {
-        .info-ajout {
+    @media(max-width: 812px) {
+        .info-update {
             width: 50vw;
         }
     }

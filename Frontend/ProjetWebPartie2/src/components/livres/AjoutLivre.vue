@@ -6,7 +6,7 @@
             </div>
         </nav>
 
-        <form  @submit.prevent="ajouter" class="info-ajout">
+        <form @submit.prevent="ajouter" class="info-ajout">
             <div class="section">
                 <label for="exampleInputTitle1" class="form-label">Titre</label>
                 <input v-model="livres.nom" type="name" class="form-control" id="exampleInputEmail1">
@@ -74,7 +74,7 @@ const livres = ref({
     auteurId: null
 })
 
-const ajouter = () =>{
+const ajouter = () => {
     console.log('livres ajouter', livres.value)
     addLivres(livres.value).then(() => {
         router.push('/aLivres')
@@ -87,7 +87,13 @@ const ajouter = () =>{
 <style lang="scss" scoped>
 .ajout-livre-page {
     width: 100vw;
-    height: 100vh;
+
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        padding-left: 4rem;
+    }
 
     .info-ajout {
         width: 20vw;
@@ -101,9 +107,34 @@ const ajouter = () =>{
         }
     }
 
-    @media(max-width: 320px) {
+    @media(max-width: 768px) {
+
+        .ajout-livre-page {
+            width: 100vw;
+            height: auto;
+        }
+
         .info-ajout {
             width: 50vw;
+            flex-wrap: wrap;
+        }
+    }
+
+    @media(max-width: 1280px) {
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding-left: 4rem;
+        }
+
+        .ajout-livre-page {
+            width: 100vw;
+        }
+
+        .info-ajout {
+            width: 50vw;
+            flex-wrap: wrap;
         }
     }
 }

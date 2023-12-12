@@ -29,7 +29,7 @@ const adminCategorieProps = defineProps({
     }
 })
 
-const emit = defineEmits(['supprimerCategory', 'updateCategory'])
+const emit = defineEmits(['supprimerCategory', 'updateCategorie'])
 
 const manageDelete = () =>{
     console.log("Button : ")
@@ -58,6 +58,32 @@ flex-direction: row;
 
 .admin-categories-donnees{
     height: 1vh;
+}
+
+@media(max-width: 768px) {
+    .buttons{
+        button{
+            width: 20vw;
+            font-size: 12px;
+        }
+    }
+}
+
+@media(min-width: 812px){
+    .buttons{
+        button{
+            height: 4vw;
+        }
+    }
+
+}
+
+@media(min-width: 1280px){
+    .buttons{
+        button{
+            height: 2vw;
+        }
+    }
 }
 
 </style>

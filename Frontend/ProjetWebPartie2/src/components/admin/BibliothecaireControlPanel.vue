@@ -10,7 +10,9 @@
         <div class="bibliothecaire-tables-interface">
             <div class="bibliothecaire-briefing">
                 <span>Voici les tables disponible à manipuler.</span>
-                <p>Étant Bibliothécaire, vous avez accès à tout les fonctionnalités CRUD (create, read, update, delete) de chacune des tables si-dessous. Veuillez simplement cliqué un des bouttons verts pour accéder aux données associés.</p>
+                <p>Étant Bibliothécaire, vous avez accès à tout les fonctionnalités CRUD (create, read, update, delete) de
+                    chacune des tables si-dessous. Veuillez simplement cliqué un des bouttons verts pour accéder aux données
+                    associés.</p>
             </div>
             <div class="auteur-section">
                 <h2>Auteurs</h2>
@@ -38,10 +40,18 @@
 </script>
 
 <style lang="scss" scoped>
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding-left: 4rem;
+}
+
 .bibliothecaire-control-panel {
     width: 100vw;
-    height: 100vh;
+    height: auto;
 }
+
 
 .bibliothecaire-tables-interface {
     margin: 3rem;
@@ -151,6 +161,141 @@
 
     h2 {
         font-weight: bold;
+    }
+}
+
+@media(max-width: 768px) {
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        padding-left: 0rem;
+    }
+
+    .bibliothecaire-control-panel {
+        width: 100vw;
+        height: auto;
+    }
+
+    .bibliothecaire-tables-interface {
+        margin-right: 3rem;
+
+        h2 {
+            font-size: 16px;
+        }
+
+        a {
+            height: 150px
+        }
+
+        .auteur-section {
+            width: 70vw;
+            justify-content: space-evenly;
+
+
+            h2 {
+                margin-right: 1rem;
+            }
+
+            .auteur-access {
+                margin-left: 1rem;
+                width: 40vw;
+            }
+        }
+
+        .categories-section {
+            width: 70vw;
+            justify-content: space-evenly;
+
+            h2 {
+                margin-right: .25rem
+            }
+
+            .categories-access {
+                margin-left: .5rem;
+                width: 40vw;
+            }
+        }
+
+        .emprunts-section {
+            width: 70vw;
+            justify-content: space-evenly;
+
+            h2 {
+                margin-right: .75rem;
+            }
+
+            .emprunts-access {
+                margin-left: .75rem;
+                width: 40vw;
+            }
+        }
+
+        .livres-section {
+            width: 70vw;
+            justify-content: space-evenly;
+
+            h2 {
+                margin-right: 2.75rem;
+            }
+
+            .livres-access {
+                margin-left: 1rem;
+                width: 40vw;
+            }
+        }
+    }
+}
+
+@media(max-width: 812px) {
+    @media(min-width: 768px) {
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding-left: 4rem;
+        }
+
+        //Widescreen iPhone11
+        .bibliothecaire-control-panel {
+            width: 100vw;
+            height: 250vh;
+        }
+
+        .bibliothecaire-tables-interface {
+            height: 200vh;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+
+            h2 {
+                font-size: 20px;
+            }
+
+            a {
+                height: auto;
+                width: auto;
+                margin-left: 1rem;
+            }
+
+
+            .auteur-section {
+                width: 35vw;
+            }
+
+            .categories-section {
+                width: 35vw;
+            }
+
+            .emprunts-section {
+                width: 35vw;
+            }
+
+            .livres-section {
+                width: 35vw;
+            }
+        }
     }
 }
 </style>

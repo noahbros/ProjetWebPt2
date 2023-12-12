@@ -4,16 +4,17 @@
         <nav class="navbar border-bottom border-body" style="background: #1e293b ">
             <div class="container-fluid">
                 <a class="navbar-brand" style="color: #ffffff">Browse / {{ livres.nom }}</a>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
             </div>
         </nav>
 
         <div class="info-livres-unique">
             <div class="titre-livre">
                 <h1>{{ livres.nom }} </h1>
+            </div>
+
+
+            <div class="image-livre">
+                <img :src=livres.photo alt="Image" id="image">
             </div>
 
             <div class="bio-livre">
@@ -29,10 +30,6 @@
             <div class="edition-livre">
                 <h2>Maison d'édition</h2>
                 <p> {{ livres.maison_edition }}</p>
-            </div>
-
-            <div class="image-livre">
-                <img :src =  livres.photo alt="Image" id="image">
             </div>
 
             <div class="auteur-livre">
@@ -63,12 +60,11 @@
         </div>
 
     </div>
-
 </template>
 
 
 <script setup>
-import {ref, reactive, onBeforeMount} from 'vue';
+import { ref, reactive, onBeforeMount } from 'vue';
 import { useRoute } from 'vue-router';
 const route = useRoute()
 console.log('route', route)
@@ -82,19 +78,139 @@ const livres = ref({})
 console.log(livres)
 
 onBeforeMount(() => {
-    if(id)
-    searchLivres(id).then((data) =>{
-        console.log('Livres', data)
-        livres.value = data[0]
-        console.log(livres.value)
-    }).catch(err => console.log('Detail livre', err))
+    if (id)
+        searchLivres(id).then((data) => {
+            console.log('Livres', data)
+            livres.value = data[0]
+            console.log(livres.value)
+        }).catch(err => console.log('Detail livre', err))
 })
 
 </script>
 
 
 <style lang="scss" scoped>
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding-left: 4rem;
+}
 
+.info-livres-page {
+    width: 100vw;
+    height: auto;
+}
+
+.info-livres-unique {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 100vh;
+    font-size: 4vw;
+    margin-left: 5rem;
+
+    #image {
+        margin-bottom: 1rem;
+        border: solid .25rem black;
+        border-radius: 1rem;
+        top: 3rem;
+        width: 10rem;
+        left: 7rem;
+        height: 10rem;
+    }
+
+    h1{
+        font-weight: bolder;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    h3{
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    h4{
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    p{
+        font-size: 12px;
+    }
+}
+
+@media(min-width: 812px) {
+    nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding-left: 4rem;
+}
+
+.info-livres-page {
+    width: 100vw;
+    height: auto;
+}
+
+.info-livres-unique {
+    margin-left: 12vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 100vh;
+    font-size: 12px;
+    margin-left: 5rem;
+
+    #image {
+        margin-bottom: 1rem;
+        border: solid .25rem black;
+        border-radius: 1rem;
+        top: 3rem;
+        width: 10rem;
+        left: 7rem;
+        height: 10rem;
+    }
+
+    h1{
+        font-weight: bolder;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h3{
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    h4{
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    p{
+        font-size: 14px;
+    }
+}
+}
+
+@media(min-width: 1280px){
+    nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding-left: 4rem;
+}
 .info-livres-page{
     width: 100vw;
     height: 100vh;
@@ -103,47 +219,59 @@ onBeforeMount(() => {
 .info-livres-unique{
     margin: 2rem;
     position: relative;
-    display: flex;
-    align-items:flex-start;
-    flex-direction: column;
-    flex-wrap: wrap;
     height: 80vh;
+
+    h1{
+        font-size: 5vh;
+    }
+
+    h2{
+        font-size: 4vh;
+    }
+
+    h3{
+        font-size: 3vh;
+    }
+
+    h4{
+        font-size: 2vh;
+    }
 
     #image{
         border: solid .5rem black;
         border-radius: 1rem;
         position: absolute;
-        top: 1rem;
+        top: 4rem;
         width: 25rem;
         height: 25rem;
     }
 
     .titre-livre{
         position: absolute;
-        left: 30rem;
+        left: 7rem;
     }
 
     .bio-livre{
         position: absolute;
-        left: 30rem;
+        left: 35rem;
         top: 6rem;
     }
 
     .pub-livre{
         position: absolute;
-        left: 30rem;
+        left: 35rem;
         top : 12rem;
     }
 
     .edition-livre{
         position: absolute;
-        left: 30rem;
+        left: 35rem;
         top: 17rem;
     }
 
     .auteur-livre{
         position: absolute;
-        left: 30rem;
+        left: 35rem;
         top: 23rem;
     }
 
@@ -171,5 +299,5 @@ onBeforeMount(() => {
         top: 23rem;
     }
 }
-
+}
 </style>
