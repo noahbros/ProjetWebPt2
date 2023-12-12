@@ -1,7 +1,7 @@
 <template>
     <body class="admin-utilisateurs">
         <nav class="navbar border-bottom border-body" style="background: #1e293b ">
-            <div class="container-fluid">
+            <div class="container">
                 <a class="navbar-brand" style="color: #ffffff; font-weight: bold">Utilisateurs data</a>
             </div>
         </nav>
@@ -65,27 +65,7 @@ const addUtilisateur = () => {
 
 </script>
 
-<style lang=scss scoped>
-nav {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    padding-left: 4rem;
-}
-
-.admin-utilisateurs {
-    height: auto;
-
-    .donnees-utilisateurs {
-        margin: 2rem;
-        width: 50vw;
-
-    }
-
-    table {
-        width: 25vw;
-    }
-}
+<style lang='scss' scoped>
 
 
 @media(max-width: 812px) {
@@ -93,15 +73,17 @@ nav {
         position: sticky;
         top: 0;
         z-index: 50;
-        padding-left: 0rem;
+        padding-left: 4rem;
     }
 
+
     .admin-utilisateurs {
-        width: 200rem;
-        height: auto;
+        width: 200vw;
+        height: 100vh;
 
         table {
-            margin-left: 12vw;
+            margin: 2rem;
+            margin-left: 5rem;
 
         }
 
@@ -111,7 +93,7 @@ nav {
     }
 }
 
-@media(max-width: 1280px){
+@media(min-width: 1280px){
     nav {
         position: sticky;
         top: 0;
@@ -119,9 +101,23 @@ nav {
         padding-left: 4rem;
     }
 
-    .admin-utilisateurs{
-        width: 100rem;
-        height: auto;
+    #ajout{
+        margin-left: 3rem;
     }
+    .admin-utilisateurs {
+    width: 100vw;
+    height: 100vh;
+
+    .donnees-utilisateurs {
+        margin: 2rem;
+        width: 50vw;
+
+    }
+
+    table {
+        width: 25vw;
+        margin-left: 2vw;
+    }
+}
 }
 </style>

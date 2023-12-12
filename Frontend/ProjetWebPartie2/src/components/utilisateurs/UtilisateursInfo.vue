@@ -67,6 +67,7 @@
             </div>
             <div class="logout-section">
                 <button @click="logout" class="btn btn-outline-success" type="submit" id="logout">Logout</button>
+                <button @click="update" class="btn btn-outline-success">Mettre-a-jour</button>
             </div>
         </section>
     </body>
@@ -123,6 +124,11 @@ const logout = () => {
     setToken("")
     router.push('/login')
 }
+
+const update = () =>{
+    router.push(`/utilisateur-update/${loggedInUser.id}`)
+}
+
 </script>
 
 <style lang="scss" scoped>
@@ -153,6 +159,7 @@ h5 {
 .logout-section {
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
     flex-direction: column;
 
     #logout {

@@ -9,8 +9,8 @@ const useLivres = () =>{
         const result = await frontAPI.get(`/livres`)
         return result.data.data
     }
-    const searchLivres = async (id) =>{
-        const result = await frontAPI.get(`/livres/get`, {params : {id}})
+    const searchLivres = async (id, nom) =>{
+        const result = await frontAPI.get(`/livres/get`, {params : {id, nom}})
         return result.data.data
     }
     const addLivres = async (livres) =>{

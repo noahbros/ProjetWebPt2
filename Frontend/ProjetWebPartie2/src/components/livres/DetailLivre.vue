@@ -56,7 +56,7 @@
                 <h4>Montant disponible</h4>
                 <p> {{ livres.montant }}</p>
             </div>
-
+            <button @click="checkEmprunt" class="btn btn-outline-success">Emprunte</button>
         </div>
 
     </div>
@@ -65,12 +65,16 @@
 
 <script setup>
 import { ref, reactive, onBeforeMount } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
+const router = useRouter()
 const route = useRoute()
 console.log('route', route)
 const { id } = route.params
 
 import useLivres from '../../services/serviceLivres'
+import useAuthStore from '../../stores/authStore.js'
+
+const { loggedInUser} = useAuthStore()
 
 const { searchLivres } = useLivres()
 
@@ -79,12 +83,22 @@ console.log(livres)
 
 onBeforeMount(() => {
     if (id)
-        searchLivres(id).then((data) => {
+        searchLivres(id).then((data) => { //Manage exception if list is empty.
             console.log('Livres', data)
             livres.value = data[0]
             console.log(livres.value)
         }).catch(err => console.log('Detail livre', err))
 })
+
+const checkEmprunt = () =>{
+    console.log(loggedInUser)
+    if(loggedInUser.roleId === 1 || loggedInUser.roleId === 2){
+        router.push('/aEmprunts')
+    }
+    else{ //Manage exception
+        console.log('non-autoriser')
+    }
+}
 
 </script>
 
@@ -111,6 +125,11 @@ nav {
     height: 100vh;
     font-size: 4vw;
     margin-left: 5rem;
+
+    button{
+        align-self: center;
+        width: 10rem;
+    }
 
     #image {
         margin-bottom: 1rem;

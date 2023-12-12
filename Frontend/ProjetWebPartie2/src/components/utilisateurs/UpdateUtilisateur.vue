@@ -32,11 +32,6 @@
                 <label for="exampleInputPassword1" class="form-label">Password</label>
                 <input v-model="utilisateur.mot_de_passe" type="password" class="form-control" id="exampleInputPassword1">
             </div>
-            <div class="section">
-                <label for="exampleInputRole1" class="form-label">RoleID</label>
-                <input v-model="utilisateur.roleId" type="number" class="form-control" id="exampleInputRole1">
-                <p>Pour les roles voici les ID respectif : 1 = Admin, 2 = Bibliothecaire, 3 = Utilisateur</p>
-            </div>
             <button type="submit" class="btn btn-primary">Mettre-a-jour</button>
         </form>
     </body>
@@ -45,6 +40,7 @@
 <script setup>
 import { ref, reactive, onBeforeMount } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import useAuthStore from '../../stores/authStore';
 
 const route = useRoute()
 const { id } = route.params
@@ -54,6 +50,7 @@ const utilisateur = ref({})
 
 import useUtilisateur from '../../services/serviceUtilisateur';
 const { searchUtilisateurs, modifierUtilisateur } = useUtilisateur()
+const {loggedInUser} = useAuthStore()
 
 onBeforeMount(() => {
     if (id) searchUtilisateurs(id).then(data => {
@@ -63,7 +60,12 @@ onBeforeMount(() => {
 
 const updateUtilisateur = () => {
     modifierUtilisateur(id, utilisateur.value).then(() => {
-        router.push('/aUtilisateurs')
+        if(loggedInUser.roleId === 1 || loggedInUser.roleID === 2){
+            router.push('/aUtilisateurs')
+        }
+        else{
+            router.push('/utilisateurs')
+        }
     }).catch(err => console.log('Probleme lors de la mise a jour', err))
 }
 </script>
@@ -71,6 +73,13 @@ const updateUtilisateur = () => {
 
 
 <style lang='scss' scoped>
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding-left: 4rem;
+}
+
 .update-utilisateur-page {
     width: 100vw;
     height: auto;
@@ -92,6 +101,10 @@ const updateUtilisateur = () => {
     }
 
     @media(max-width: 768px) {
+        nav {
+            padding-left: 0rem;
+        }
+
         .info-update {
             width: 50vw;
         }
@@ -105,7 +118,7 @@ const updateUtilisateur = () => {
             padding-left: 4rem;
         }
 
-        .update-utilisateur-page{
+        .update-utilisateur-page {
             width: 100vw;
             height: auto;
         }
