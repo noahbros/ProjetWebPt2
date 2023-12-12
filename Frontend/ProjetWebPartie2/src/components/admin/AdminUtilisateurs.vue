@@ -68,7 +68,9 @@ const goToUpdate=()=>{
 <style lang="scss" scoped>
 
 .buttons{
-width: 2vw;
+display: flex;
+align-items: center;
+flex-direction: row;
     button{
     height: 5vh;
 }
@@ -79,10 +81,18 @@ width: 2vw;
     height: .5vh;
 }
 
-@media(max-width: 1280px){
+@media(max-width: 812px){
     .buttons{
         button{
             height: 9vh;
+        }
+    }
+}
+
+@media(max-width: 768px){
+    .buttons{
+        button{
+            height: 4vh;
         }
     }
 }

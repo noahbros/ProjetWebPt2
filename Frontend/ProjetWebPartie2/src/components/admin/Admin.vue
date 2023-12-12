@@ -69,6 +69,7 @@
           <button @click="logout" class="btn btn-outline-success" type="submit" id="logout">Logout</button>
           <button @click="accessAdminCommands" class="btn btn-outline-success" type="submit" id="admin">Admin
             Controls</button>
+          <button @click="update" class="btn btn-outline-success">Mettre-a-jour</button>
         </div>
       </div>
     </section>
@@ -115,7 +116,14 @@ const logout = () => {
 const accessAdminCommands = () => {
   router.push('/admin-console')
 }
+
+const update = () => {
+  router.push(`/utilisateur-update/${loggedInUser.id}`)
+}
+
+
 </script>
+
 
 
 <style lang="scss" scoped>
@@ -126,7 +134,7 @@ nav {
   padding-left: 4rem;
 }
 
-.card-body{
+.card-body {
   padding: 1rem;
 }
 
@@ -155,15 +163,21 @@ section {
     width: 10rem;
   }
 
+  button {
+    margin: 1rem;
+  }
+
 }
 
-@media(max-width: 768px) { //Normal screen iPhone11
+@media(max-width: 768px) {
+
+  //Normal screen iPhone11
   .admin-account-page {
     width: 100vw;
     height: 100vh;
   }
 
-  .card{
+  .card {
     margin-top: 1rem;
   }
 
@@ -177,13 +191,15 @@ section {
   }
 }
 
-@media(max-width: 812px) { //Widescreen iPhone11
+@media(max-width: 812px) {
+
+  //Widescreen iPhone11
   .admin-account-page {
     width: 100vw;
     height: 100vh;
   }
 
-  .card{
+  .card {
     margin-top: 1rem;
   }
 
@@ -192,5 +208,4 @@ section {
     margin-left: 4rem;
   }
 
-}
-</style>
+}</style>

@@ -65,10 +65,10 @@
         </div>
       </div>
       <div class="logout-section">
-        <div class="adminButtons">
+        <div class="bibliothecaireButtons">
           <button @click="logout" class="btn btn-outline-success" type="submit" id="logout">Logout</button>
-          <button @click="accessBibliothecaireCommands" class="btn btn-outline-success" type="submit"
-            id="bibliothecaire">Bibliothecaire Controls</button>
+          <button @click="accessBibliothecaireCommands" class="btn btn-outline-success" type="submit" id="bibliothecaire">Bibliothecaire Controls</button>
+          <button @click="update" class="btn btn-outline-success">Mettre-a-jour</button>
         </div>
       </div>
     </section>
@@ -115,6 +115,10 @@ const logout = () => {
 const accessBibliothecaireCommands = () => {
   router.push('/bibliothecaire-console')
 }
+
+const update = () =>{
+    router.push(`/utilisateur-update/${loggedInUser.id}`)
+}
 </script>
 
 
@@ -147,6 +151,7 @@ section {
 .logout-section {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   flex-direction: column;
   text-align: center;
 
@@ -155,6 +160,10 @@ section {
     width: 10rem;
   }
 
+}
+
+button{
+  margin: 1rem;
 }
 
 @media(max-width: 768px) { //Normal screen iPhone11
@@ -178,7 +187,7 @@ section {
 }
 
 @media(max-width: 812px) { //Widescreen iPhone11
-  .admin-account-page {
+  .bibliothecaire-account-page {
     width: 100vw;
     height: 100vh;
   }

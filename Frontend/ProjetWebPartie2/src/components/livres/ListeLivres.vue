@@ -4,8 +4,8 @@
         <nav class="navbar border-bottom border-body" style="background: #1e293b ">
             <div class="container-fluid">
                 <a class="navbar-brand" style="color: #ffffff">Browse</a>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form @submit.prevent='search' class="d-flex" role="search">
+                    <input v-model="livresChercher.nom" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
@@ -20,11 +20,21 @@
 <script setup>
 import { ref, reactive, onBeforeMount } from 'vue';
 const livres = ref([])
+const livresChercher = ref({
+    nom: '',
+    date_de_pub: '',
+    rating: 0,
+    photo: '',
+    maison_edition: '',
+    location: '',
+    montant: 0,
+    biographie: '',
+    categoryId: null,
+    auteurId: null
+})
 import useLivres from '../../services/serviceLivres.js'
-import { useRouter } from 'vue-router'
-const router = useRouter()
 
-const { getAllLivres } = useLivres()
+const { getAllLivres, searchLivres } = useLivres()
 onBeforeMount(() => {
     getAllLivres().then(data => {
         livres.value = data
@@ -33,6 +43,23 @@ onBeforeMount(() => {
     })
 })
 import Livres from './Livres.vue'
+
+const search = () =>{
+    console.log(livresChercher.value.nom)
+    if(!livresChercher.value.nom){
+        console.log('no search')
+        getAllLivres().then(data =>{
+            livres.value = data
+            console.log('No search', data)
+        })
+    }
+    else{
+        searchLivres(null,livresChercher.value.nom).then(data =>{
+            livres.value = data
+            console.log('Liste livres filtrer', data)
+        })
+    }
+}
 
 
 </script>

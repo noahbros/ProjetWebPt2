@@ -2,7 +2,7 @@
 import { Router } from 'express'
 import {getAllCategories, SearchCategories, AddCategory, DeleteCategory, UpdateCategory} from '../controllers/categories.js'
 import {body, query} from 'express-validator'
-import { isAdmin, isAdminOrBibliothecaire, verifierToken } from '../auth/autorisation.js'
+import { isAdminOrBibliothecaire, verifierToken } from '../auth/autorisation.js'
 import categoriesRegles from '../validations/CategoriesValidations.js'
 
 const routeCategories = Router()
