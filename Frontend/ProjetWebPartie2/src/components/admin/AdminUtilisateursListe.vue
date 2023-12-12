@@ -96,7 +96,12 @@ const addUtilisateur = () => {
         position: sticky;
         top: 0;
         z-index: 50;
-        padding-left: 4rem;
+        padding-left: 5rem;
+    }
+
+    .container{
+        padding: 0;
+        margin: 0;
     }
 
     #ajout {

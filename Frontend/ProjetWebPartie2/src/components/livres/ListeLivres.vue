@@ -87,12 +87,20 @@ div.allLivres {
     font-weight: bold;
 }
 
+.container{
+        flex-direction: row;
+    }
+
 @media(max-width: 768px) {
 
     div.livres-page{
         nav{
             padding-left: 0rem;
         }
+    }
+
+    form{
+        margin-left: 0rem;
     }
 
     .allLivres {
@@ -105,7 +113,7 @@ div.allLivres {
 
     .container-fluid{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
     }
 
 }
@@ -118,6 +126,10 @@ div.allLivres {
 
     .card-text{
         margin-left: 1rem;
+    }
+
+    .form-control.me-2{
+        width: 10rem;
     }
 }
 </style>
