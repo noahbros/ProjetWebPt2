@@ -40,6 +40,8 @@ import useLivres from '../../services/serviceLivres.js'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
+
+
 const { getAllLivres, deleteLivres } = useLivres();
 onBeforeMount(() => {
     getAllLivres().then(data => {
@@ -75,17 +77,17 @@ const addLivres = () => {
     height: 10vh;
 }
 
-.container{
+.container {
     padding-left: 0;
     margin-left: 0;
 }
 
 nav {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        padding-left: 4.5rem;
-    }
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding-left: 4.5rem;
+}
 
 
 
@@ -145,7 +147,7 @@ nav {
 }
 
 
-@media(min-width: 1280px) {
+@media(min-width: 813px) {
 
     .admin-livres {
         width: 100vw;
@@ -155,7 +157,13 @@ nav {
             margin: 2rem;
             margin-left: 5rem;
             width: 50vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
+            table{
+                margin-left: 20vw;
+            }
         }
     }
 }

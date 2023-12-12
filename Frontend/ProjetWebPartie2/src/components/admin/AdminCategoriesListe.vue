@@ -102,8 +102,9 @@ nav {
 @media(min-width: 812px) {
 
     table{
-        margin-left: 14rem;
+        margin-left: 4rem;
     }
+
 
     .donnees-categories{
         display: flex;
