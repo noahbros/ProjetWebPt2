@@ -66,8 +66,6 @@ const addUtilisateur = () => {
 </script>
 
 <style lang='scss' scoped>
-
-
 @media(max-width: 812px) {
     nav {
         position: sticky;
@@ -93,7 +91,7 @@ const addUtilisateur = () => {
     }
 }
 
-@media(min-width: 1280px){
+@media(min-width: 813px) {
     nav {
         position: sticky;
         top: 0;
@@ -101,23 +99,27 @@ const addUtilisateur = () => {
         padding-left: 4rem;
     }
 
-    #ajout{
+    #ajout {
         margin-left: 3rem;
     }
+
     .admin-utilisateurs {
-    width: 100vw;
-    height: 100vh;
+        width: 100vw;
+        height: 100vh;
 
-    .donnees-utilisateurs {
-        margin: 2rem;
-        width: 50vw;
+        .donnees-utilisateurs {
+            margin: 2rem;
+            width: 50vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
+        }
+
+        table {
+            width: 25vw;
+            margin-left: 2vw;
+        }
     }
-
-    table {
-        width: 25vw;
-        margin-left: 2vw;
-    }
-}
 }
 </style>

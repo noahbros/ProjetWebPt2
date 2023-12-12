@@ -27,11 +27,11 @@
         <td>
             {{ livreAdmin.biographie }}
         </td>
-        <td>
-            {{ livreAdmin.categoryId }} <!-- Not actually it, have to change it.-->
+        <td @load="setInfo" class="categories">
+            {{ livreAdmin.categoryId }}
         </td>
-        <td>
-            {{ livreAdmin.auteurId }} <!-- Not actually it, have to change it.-->
+        <td @load="setInfo" class="auteur">
+            {{ livreAdmin.auteurId }}
         </td>
         <td class="buttons">
             <button class="btn btn-danger" @click="manageDelete">Supprimer</button>
@@ -41,10 +41,14 @@
 </template>
 
 <script setup>
-import {ref, reactive} from 'vue';
-
+import { ref, reactive, onBeforeMount } from 'vue';
+import useCategories from '../../services/serviceCategories';
+import useAuteur from '../../services/serviceAuteur'
 import { useRouter } from 'vue-router';
 const router = useRouter()
+
+const { SearchCategories } = useCategories();
+const { auteurParId } = useAuteur();
 
 const adminLivreProps = defineProps({
     livreAdmin: {
@@ -59,7 +63,7 @@ const adminLivreProps = defineProps({
             location: 'test',
             montant: 0,
             biographie: 'test',
-            cateogryId: '',
+            categoryId: '',
             auteurId: ''
         })
     }
@@ -67,40 +71,60 @@ const adminLivreProps = defineProps({
 
 const emit = defineEmits(['supprimerLivre', 'updateLivre'])
 
-const manageDelete = () =>{
+const manageDelete = () => {
     console.log("Button : ")
     console.log("ID : ", adminLivreProps.livreAdmin.id)
     emit("supprimerLivre", adminLivreProps.livreAdmin.id)
 }
 
-const goToUpdate=()=>{
+const goToUpdate = () => {
     router.push(`/livres-update/${adminLivreProps.livreAdmin.id}`)
 }
+
+onBeforeMount(() => {
+    if (adminLivreProps.livreAdmin.auteurId) {
+        auteurParId(adminLivreProps.livreAdmin.auteurId).then((data => {
+            adminLivreProps.livreAdmin.auteurId = data.nom
+            console.log("Nom d'auteur : ", data.nom)
+        })).catch(err => console.log("Probleme pendant la recherche d'auteur", err))
+    } else {
+        document.getElementsByClassName('auteur').innerHTML = "Aucun auteur attribuer."
+    }
+
+    if (adminLivreProps.livreAdmin.categoryId) {
+        SearchCategories(adminLivreProps.livreAdmin.categoryId).then((data => {
+            adminLivreProps.livreAdmin.categoryId = data[0].nom
+            console.log("Nom de categorie :", data[0].nom)
+        })).catch(err => console.log("Probleme pendant la recherche de categories", err))
+    } else {
+        document.getElementsByClassName('categories').innerHTML = "Aucune categorie attribuer"
+    }
+})
+
 
 
 </script>
 
 <style lang="scss" scoped>
+.buttons {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
 
-.buttons{
-display: flex;
-align-items: center;
-flex-direction: row;
-    button{
-    height: 5vh;
-}
+    button {
+        height: 5vh;
+    }
 }
 
-.admin-livres-donnees{
+.admin-livres-donnees {
     height: 1vh;
 }
 
-@media(max-width: 812px){
-    .buttons{
-        button{
+@media(max-width: 812px) {
+    .buttons {
+        button {
             height: 10vh;
         }
     }
 }
-
 </style>
