@@ -1,4 +1,4 @@
-<!-- Noah Brosseau : Display livres-->
+<!-- Noah Brosseau -->
 <template>
     <div class="livres">
         <div @click="details" class="card">

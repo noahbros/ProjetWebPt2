@@ -1,3 +1,4 @@
+<!-- Noah Brosseau : Page bibliothecaire control panel-->
 <template>
     <body class="bibliothecaire-control-panel">
         <nav class="navbar border-bottom border-body" style="background: #1e293b ">

@@ -1,3 +1,4 @@
+//Noah Brosseau - Setup
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import piniaPersist from 'pinia-plugin-persistedstate'

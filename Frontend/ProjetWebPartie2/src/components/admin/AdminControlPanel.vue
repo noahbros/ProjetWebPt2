@@ -1,3 +1,4 @@
+<!-- Noah Brosseau : Page admin control panel-->
 <template>
     <body class="admin-control-panel">
         <nav class="navbar border-bottom border-body" style="background: #1e293b ">
@@ -45,7 +46,6 @@ import { ref, reactive } from 'vue'
 import { onBeforeMount } from 'vue';
 import { useRouter } from 'vue-router';
 import useAuthStore from '../../stores/authStore.js'
-
 import useUtilisateur from '../../services/serviceUtilisateur.js'
 
 const { searchUtilisateurs } = useUtilisateur();

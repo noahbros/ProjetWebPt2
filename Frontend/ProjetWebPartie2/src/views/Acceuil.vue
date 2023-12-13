@@ -1,3 +1,4 @@
+<!-- Noah Brosseau - Page acceuil -->
 <template>
   <body class="acceuil-page">
     <nav class="navbar border-bottom border-body" style="background: #1e293b ">

@@ -1,3 +1,4 @@
+//Noah Brosseau - Variable de URL
 import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'

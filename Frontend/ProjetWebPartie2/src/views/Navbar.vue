@@ -1,3 +1,4 @@
+<!-- Noah Brosseau : Sidebar -->
 <template>
     <aside :class="`${is_open && 'is-open'}`">
       <div class="logo">
