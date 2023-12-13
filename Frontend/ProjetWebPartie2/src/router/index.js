@@ -1,3 +1,4 @@
+//Noah Brosseau - Routes
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../components/auth/Login.vue'
 import Signup from '../components/auth/Signup.vue'

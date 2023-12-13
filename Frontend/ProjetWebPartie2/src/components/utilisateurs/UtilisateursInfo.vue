@@ -1,4 +1,4 @@
-<!-- Noah Brosseau : Page utilisateurs-->
+<!-- Noah Brosseau : Page de compte utilisateur-->
 <template>
     <body class="profile-page">
         <nav class="navbar border-bottom border-body" style="background: #1e293b ">
@@ -80,7 +80,7 @@ import useUtilisateur from '../../services/serviceUtilisateur'
 import useRoles from '../../services/serviceRoles'
 import useAuthStore from '../../stores/authStore.js'
 
-const { loggedInUser, setToken, setUtilisateur } = useAuthStore()
+const { loggedInUser, logout } = useAuthStore()
 const { searchUtilisateurs, modifierUtilisateur } = useUtilisateur()
 const { searchRoles } = useRoles();
 
@@ -119,11 +119,6 @@ onBeforeMount(() => {
     }
 })
 
-const logout = () => {
-    setUtilisateur("")
-    setToken("")
-    router.push('/login')
-}
 
 const update = () =>{
     router.push(`/utilisateur-update/${loggedInUser.id}`)

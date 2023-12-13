@@ -1,10 +1,12 @@
-//NOAH BROSSEAU - AUTHENTIFICATION
+//Noah Brosseau - Authentification
 import { computed, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { defineStore } from 'pinia'
 
 const useAuthStore = defineStore('auth', () => {
     const utilisateur = ref({})
     const token = ref()
+    const router = useRouter();
 
     //Fonctions qui permet de mettre a jour les valeurs des variables precendentes.
     //SETTERS
@@ -23,7 +25,14 @@ const useAuthStore = defineStore('auth', () => {
 
     const currentToken = computed(() => token.value)
 
-    return {utilisateur, token, setUtilisateur, setToken, loggedInUser, currentToken}
+    const logout = () =>{
+        utilisateur.value = null
+        token.value = null
+        router.push('/login')
+        
+    }
+
+    return {utilisateur, token, setUtilisateur, setToken, loggedInUser, currentToken, logout}
 
 },
 {

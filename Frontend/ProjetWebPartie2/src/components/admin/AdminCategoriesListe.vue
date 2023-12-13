@@ -1,3 +1,4 @@
+<!-- Noah Brosseau : Page categorie data-->
 <template>
     <body class="admin-categories">
         <nav class="navbar border-bottom border-body" style="background: #1e293b ">

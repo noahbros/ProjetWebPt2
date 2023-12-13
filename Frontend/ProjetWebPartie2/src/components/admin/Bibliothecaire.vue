@@ -1,3 +1,4 @@
+<!-- Noah Brosseau : Page bibliothecaire compte-->
 <template>
   <body class="bibliothecaire-account-page">
     <nav class="navbar border-bottom border-body" style="background: #1e293b ">
@@ -83,8 +84,8 @@ import useUtilisateur from '../../services/serviceUtilisateur'
 import useRoles from '../../services/serviceRoles'
 import useAuthStore from '../../stores/authStore.js'
 
-const { loggedInUser, setToken, setUtilisateur } = useAuthStore()
-const { searchUtilisateurs, modifierUtilisateur } = useUtilisateur()
+const { loggedInUser, logout } = useAuthStore()
+const { searchUtilisateurs } = useUtilisateur()
 const { searchRoles } = useRoles();
 
 const route = useRoute();
@@ -105,12 +106,6 @@ onBeforeMount(() => {
     }).catch(err => console.log("Probleme d'affichage utilisateur", err))
   }
 })
-
-const logout = () => {
-  setUtilisateur("")
-  setToken("")
-  router.push('/login')
-}
 
 const accessBibliothecaireCommands = () => {
   router.push('/bibliothecaire-console')
