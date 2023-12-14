@@ -5,7 +5,8 @@
             <div class="container-fluid">
                 <a class="navbar-brand" style="color: #ffffff">Browse</a>
                 <form @submit.prevent='search' class="d-flex" role="search">
-                    <input v-model="livresChercher.nom" class="form-control me-2" type="search" placeholder="Search par nom" aria-label="Search">
+                    <input v-model="livresChercher.nom" class="form-control me-2" type="search" placeholder="Search par nom"
+                        aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
@@ -55,22 +56,26 @@ onBeforeMount(() => {
         livres.value = data
 
         console.log('Liste livres', data)
+    }).catch(err => {
+        console.log("Problem lors d'affichage", err)
+        livres.value = null
+        document.getElementById('not-found').innerHTML = "Auncun livre trouver."
     })
 })
 import Livres from './Livres.vue'
 
-const search = () =>{
+const search = () => {
     document.getElementById('not-found').innerHTML = null
     console.log(livresChercher.value.nom)
-    if(!livresChercher.value.nom){
+    if (!livresChercher.value.nom) {
         console.log('no search')
-        getAllLivres().then(data =>{
+        getAllLivres().then(data => {
             livres.value = data
             console.log('No search', data)
         }).catch(err => console.log("Probleme pendant affichage", err))
     }
-    else{
-        searchLivres(null,livresChercher.value.nom).then(data =>{
+    else {
+        searchLivres(null, livresChercher.value.nom).then(data => {
             livres.value = data
             console.log('Liste livres filtrer', data)
         }).catch(err => {
@@ -109,25 +114,25 @@ div.allLivres {
     font-weight: bold;
 }
 
-.container{
-        flex-direction: row;
-    }
+.container {
+    flex-direction: row;
+}
 
-#not-found{
-    padding : 1rem;
+#not-found {
+    padding: 1rem;
     font-weight: bold;
     font-size: 30px;
 }
 
 @media(max-width: 768px) {
 
-    div.livres-page{
-        nav{
+    div.livres-page {
+        nav {
             padding-left: 0rem;
         }
     }
 
-    form{
+    form {
         margin-left: 0rem;
     }
 
@@ -139,31 +144,31 @@ div.allLivres {
         flex-wrap: wrap;
     }
 
-    .container-fluid{
+    .container-fluid {
         display: flex;
         flex-direction: row;
     }
 
-    #not-found{
-    padding : 1rem;
-    margin-left: 5rem;
-    font-weight: bold;
-    font-size: 30px;
-}
+    #not-found {
+        padding: 1rem;
+        margin-left: 5rem;
+        font-weight: bold;
+        font-size: 30px;
+    }
 
 }
 
-@media(min-width: 812px){
+@media(min-width: 812px) {
 
-    .allLivres{
+    .allLivres {
         margin-left: 5rem;
     }
 
-    .card-text{
+    .card-text {
         margin-left: 1rem;
     }
 
-    .form-control.me-2{
+    .form-control.me-2 {
         width: 10rem;
     }
 }
